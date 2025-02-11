@@ -1,83 +1,152 @@
 import { DotterSeperator } from "@/components/dotted-seperator";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { FcGoogle } from "react-icons/fc";
 import { FaGithub } from "react-icons/fa";
 import { useState } from "react";
 import { IoMdEye, IoMdEyeOff } from "react-icons/io";
+import { useForm } from "react-hook-form";
+import { z } from "zod";
+import { zodResolver } from "@hookform/resolvers/zod";
+import Link from "next/link";
+
+const SignInFormSchema = z.object({
+  email: z.string().email({
+    message: "Email address is required!",
+  }),
+  password: z.string().min(1, {
+    message: "Password is required!",
+  }),
+});
 
 export const SignInCard = () => {
   const [showPassword, setShowPassword] = useState<boolean>(false);
+
+  const form = useForm<z.infer<typeof SignInFormSchema>>({
+    resolver: zodResolver(SignInFormSchema),
+    defaultValues: {
+      email: "",
+      password: "",
+    },
+  });
+
+  const handleFormSubmit = (values: z.infer<typeof SignInFormSchema>) => {
+    console.log("Values are: ", values);
+  };
+
   return (
-    <Card className="w-full h-full md:w-[450px] border-none shadow-none">
+    <Card className="w-full h-full md:w-[450px]">
       <CardHeader className="text-center p-7 flex items-center justify-center">
-        <CardTitle className="text-2xl">Welcome Back</CardTitle>
+        <CardTitle className="text-2xl text-indigo-600 font-semibold">
+          Welcome Back
+        </CardTitle>
       </CardHeader>
       <div className="px-7">
         <DotterSeperator />
       </div>
       <CardContent className="p-7">
-        <form className="space-y-4">
-          <Input
-            disabled={false}
-            required
-            type="email"
-            name="email"
-            // value={""}
-            onChange={() => {}}
-            placeholder="Enter email address"
-            className="shadow-sm shadow-indigo-500 outline-none"
-          />
-          <div className="relative h-fit">
-            <span
-              onClick={() => setShowPassword((prev) => !prev)}
-              className="absolute top-3 right-3 text-xl hover:cursor-pointer text-indigo-700 opacity-55 hover:opacity-100"
-            >
-              {showPassword ? <IoMdEye /> : <IoMdEyeOff />}
-            </span>
-            <Input
-              disabled={false}
-              required
-              type={showPassword ? "text" : "password"}
-              name="password"
-              // value={""}
-              onChange={() => {}}
-              placeholder="Enter your password"
-              className="pr-12"
-              min={8}
-              max={256}
+        <Form {...form}>
+          <form
+            onSubmit={form.handleSubmit(handleFormSubmit)}
+            className="space-y-4"
+          >
+            <FormField
+              control={form.control}
+              name="email"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel className="text-indigo-600 ">Email</FormLabel>
+                  <FormControl>
+                    <Input
+                      {...field}
+                      disabled={false}
+                      type="email"
+                      name="email"
+                      placeholder="Enter email address"
+                      className="shadow-sm shadow-indigo-500 outline-none"
+                    />
+                  </FormControl>
+                  <FormMessage className="text-rose-500" />
+                </FormItem>
+              )}
             />
-          </div>
+            <FormField
+              control={form.control}
+              name="password"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel className="text-indigo-600 ">Password</FormLabel>
+                  <FormControl>
+                    <div className="relative h-fit">
+                      <span
+                        onClick={() => setShowPassword((prev) => !prev)}
+                        className="absolute top-3 right-3 text-xl hover:cursor-pointer text-indigo-700 opacity-55 hover:opacity-100"
+                      >
+                        {showPassword ? <IoMdEye /> : <IoMdEyeOff />}
+                      </span>
+                      <Input
+                        {...field}
+                        disabled={false}
+                        type={showPassword ? "text" : "password"}
+                        name="password"
+                        placeholder="Enter your password"
+                        className="pr-12"
+                        min={8}
+                        max={256}
+                      />
+                    </div>
+                  </FormControl>
+                  <FormMessage className="text-rose-500" />
+                </FormItem>
+              )}
+            />
 
-          <Button disabled={false} className="w-full tracking-wider">
-            SIGN IN
-          </Button>
-        </form>
+            <Button disabled={false} className="w-full tracking-wider">
+              SIGN IN
+            </Button>
+          </form>
+        </Form>
       </CardContent>
+      <div className="w-fit ml-auto px-7 mb-2">
+        <Link
+          href={"/sign-up"}
+          className="text-sm font-medium text-muted-foreground hover:text-indigo-500 hover:underline cursor-pointer"
+        >
+          Don't have an account?
+        </Link>
+      </div>
       <div className="px-7">
         <DotterSeperator />
-        <CardContent className="p-7 flex flex-col gap-y-4">
-          <Button
-            className="w-full"
-            disabled={false}
-            variant={"secondary"}
-            size={"lg"}
-          >
-            <FcGoogle className="mr-2 !size-6" />
-            Login with Google
-          </Button>
-          <Button
-            className="w-full"
-            disabled={false}
-            variant={"secondary"}
-            size={"lg"}
-          >
-            <FaGithub className="mr-2 !size-6" />
-            Login with Github
-          </Button>
-        </CardContent>
       </div>
+      <CardContent className="p-7 flex flex-col gap-y-4">
+        <Button
+          className="w-full"
+          disabled={false}
+          variant={"secondary"}
+          size={"lg"}
+        >
+          <FcGoogle className="mr-2 !size-6" />
+          Login with Google
+        </Button>
+        <Button
+          className="w-full"
+          disabled={false}
+          variant={"secondary"}
+          size={"lg"}
+        >
+          <FaGithub className="mr-2 !size-6" />
+          Login with Github
+        </Button>
+      </CardContent>
     </Card>
   );
 };
