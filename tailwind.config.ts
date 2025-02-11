@@ -9,6 +9,9 @@ const config: Config = {
     "./src/features/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
+    fontFamily: {
+      inter: ["Inter", "sans-serif"],
+    },
     extend: {
       colors: {
         background: "hsl(var(--background))",
