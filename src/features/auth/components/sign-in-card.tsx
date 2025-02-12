@@ -18,29 +18,24 @@ import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import Link from "next/link";
-
-const SignInFormSchema = z.object({
-  email: z.string().email({
-    message: "Email address is required!",
-  }),
-  password: z.string().min(1, {
-    message: "Password is required!",
-  }),
-});
+import { SignInSchema } from "@/features/auth/schemas";
+import { useLogin } from "@/features/auth/api/use-login";
 
 export const SignInCard = () => {
+  const { mutate } = useLogin();
+
   const [showPassword, setShowPassword] = useState<boolean>(false);
 
-  const form = useForm<z.infer<typeof SignInFormSchema>>({
-    resolver: zodResolver(SignInFormSchema),
+  const form = useForm<z.infer<typeof SignInSchema>>({
+    resolver: zodResolver(SignInSchema),
     defaultValues: {
       email: "",
       password: "",
     },
   });
 
-  const handleFormSubmit = (values: z.infer<typeof SignInFormSchema>) => {
-    console.log("Values are: ", values);
+  const handleFormSubmit = async (values: z.infer<typeof SignInSchema>) => {
+    mutate({ json: values });
   };
 
   return (
@@ -110,7 +105,7 @@ export const SignInCard = () => {
               )}
             />
 
-            <Button disabled={false} className="w-full tracking-wider">
+            <Button type="submit" className="w-full tracking-wider">
               SIGN IN
             </Button>
           </form>

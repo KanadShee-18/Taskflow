@@ -24,24 +24,16 @@ import Link from "next/link";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-
-const SignUpFormSchema = z.object({
-  name: z.string().min(6, {
-    message: "Minimum 6 character name is required!",
-  }),
-  email: z.string().email({
-    message: "Email address is required!",
-  }),
-  password: z.string().min(1, {
-    message: "Minimum 8 characters password is required!",
-  }),
-});
+import { SignUpSchema } from "@/features/auth/schemas";
+import { useRegister } from "@/features/auth/api/use-register";
 
 export const SignUpCard = () => {
+  const { mutate } = useRegister();
+
   const [showPassword, setShowPassword] = useState<boolean>(false);
 
-  const form = useForm<z.infer<typeof SignUpFormSchema>>({
-    resolver: zodResolver(SignUpFormSchema),
+  const form = useForm<z.infer<typeof SignUpSchema>>({
+    resolver: zodResolver(SignUpSchema),
     defaultValues: {
       name: "",
       email: "",
@@ -49,8 +41,9 @@ export const SignUpCard = () => {
     },
   });
 
-  const onFormSubmit = (values: z.infer<typeof SignUpFormSchema>) => {
+  const onFormSubmit = (values: z.infer<typeof SignUpSchema>) => {
     console.log("Values: ", values);
+    mutate({ json: values });
   };
 
   return (
@@ -149,7 +142,7 @@ export const SignUpCard = () => {
               )}
             />
 
-            <Button disabled={false} className="w-full tracking-wider">
+            <Button type="submit" className="w-full tracking-wider">
               SIGN UP
             </Button>
           </form>
