@@ -5,8 +5,30 @@ import { createAdminClient } from "@/lib/appwrite";
 import { ID } from "node-appwrite";
 import { deleteCookie, setCookie } from "hono/cookie";
 import { AUTH_COOKIE } from "../constants";
+import { sessionMiddleware } from "@/lib/session-middleware";
 
 const app = new Hono()
+  .get("/currentUser", sessionMiddleware, async (c) => {
+    try {
+      const user = c.get("user");
+
+      return c.json(
+        {
+          success: true,
+          data: user,
+        },
+        200
+      );
+    } catch (error) {
+      return c.json(
+        {
+          success: false,
+          message: "Some error occurred while getting the current user!",
+        },
+        404
+      );
+    }
+  })
   .post("/login", zValidator("json", SignInSchema), async (c) => {
     try {
       const { email, password } = c.req.valid("json");
@@ -56,9 +78,14 @@ const app = new Hono()
       return c.json({ error: "Invalid credentials." }, 400);
     }
   })
-  .post("/logout", async(c) => {
+  .post("/logout", sessionMiddleware, async (c) => {
     try {
+      const account = c.get("account");
+
       deleteCookie(c, AUTH_COOKIE);
+
+      await account.deleteSession("current");
+
       return c.json({
         success: true,
         message: "You've logged out successfully!",
