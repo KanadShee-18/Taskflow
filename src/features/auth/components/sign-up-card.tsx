@@ -1,3 +1,5 @@
+"use client";
+
 import { DotterSeperator } from "@/components/dotted-seperator";
 import { Button } from "@/components/ui/button";
 import {
