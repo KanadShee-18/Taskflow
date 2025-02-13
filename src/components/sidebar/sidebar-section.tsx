@@ -5,6 +5,7 @@ import Link from "next/link";
 import React from "react";
 import { DotterSeperator } from "../dotted-seperator";
 import NavigationMenus from "./navigation-menus";
+import { WorkspaceSwitcher } from "@/features/workspaces/components/workspaces-switcher";
 
 const Sidebar = () => {
   return (
@@ -15,6 +16,8 @@ const Sidebar = () => {
           <Image src={"/logo-text.png"} alt="TaskFlow" width={80} height={50} />
         </div>
       </Link>
+      <DotterSeperator className="my-4" />
+      <WorkspaceSwitcher />
       <DotterSeperator className="my-4" />
       <NavigationMenus />
     </aside>
