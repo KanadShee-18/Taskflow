@@ -28,9 +28,10 @@ import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { SignUpSchema } from "@/features/auth/schemas";
 import { useRegister } from "@/features/auth/api/use-register";
+import { ChevronRight, Loader } from "lucide-react";
 
 export const SignUpCard = () => {
-  const { mutate } = useRegister();
+  const { mutate, isPending } = useRegister();
 
   const [showPassword, setShowPassword] = useState<boolean>(false);
 
@@ -87,6 +88,7 @@ export const SignUpCard = () => {
                       {...field}
                       type="text"
                       name="name"
+                      disabled={isPending}
                       placeholder="Enter your name"
                       className="shadow-sm shadow-indigo-500 outline-none"
                     />
@@ -104,6 +106,7 @@ export const SignUpCard = () => {
                   <FormControl>
                     <Input
                       {...field}
+                      disabled={isPending}
                       type="email"
                       name="email"
                       placeholder="Enter email address"
@@ -130,6 +133,7 @@ export const SignUpCard = () => {
                       </span>
                       <Input
                         {...field}
+                        disabled={isPending}
                         type={showPassword ? "text" : "password"}
                         name="password"
                         placeholder="Enter a strong password"
@@ -144,8 +148,13 @@ export const SignUpCard = () => {
               )}
             />
 
-            <Button type="submit" className="w-full tracking-wider">
-              SIGN UP
+            <Button type="submit" className="w-full group tracking-wider">
+              {isPending ? "SIGNING UP" : "SIGN UP"}
+              {isPending ? (
+                <Loader className="!size-5 animate-spin text-indigo-100" />
+              ) : (
+                <ChevronRight className="!size-5 group-hover:translate-x-2 duration-300 text-indigo-100" />
+              )}
             </Button>
           </form>
         </Form>

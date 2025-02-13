@@ -22,9 +22,10 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import Link from "next/link";
 import { SignInSchema } from "@/features/auth/schemas";
 import { useLogin } from "@/features/auth/api/use-login";
+import { ChevronRight, Loader, Loader2 } from "lucide-react";
 
 export const SignInCard = () => {
-  const { mutate } = useLogin();
+  const { mutate, isPending } = useLogin();
 
   const [showPassword, setShowPassword] = useState<boolean>(false);
 
@@ -65,7 +66,7 @@ export const SignInCard = () => {
                   <FormControl>
                     <Input
                       {...field}
-                      disabled={false}
+                      disabled={isPending}
                       type="email"
                       name="email"
                       placeholder="Enter email address"
@@ -92,7 +93,7 @@ export const SignInCard = () => {
                       </span>
                       <Input
                         {...field}
-                        disabled={false}
+                        disabled={isPending}
                         type={showPassword ? "text" : "password"}
                         name="password"
                         placeholder="Enter your password"
@@ -107,8 +108,13 @@ export const SignInCard = () => {
               )}
             />
 
-            <Button type="submit" className="w-full tracking-wider">
-              SIGN IN
+            <Button type="submit" className="w-full group tracking-wider">
+              {isPending ? "SIGNING IN" : "SIGN IN"}
+              {isPending ? (
+                <Loader className="!size-5 animate-spin text-indigo-100" />
+              ) : (
+                <ChevronRight className="!size-5 group-hover:translate-x-2 duration-300 text-indigo-100" />
+              )}
             </Button>
           </form>
         </Form>
