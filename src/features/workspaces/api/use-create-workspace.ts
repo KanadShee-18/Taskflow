@@ -19,11 +19,11 @@ export const useCreateWorkspace = () => {
       return await response.json();
     },
     onSuccess: (_, { form }) => {
-      toast.message(`Workspace ${form?.name} has been created!`);
+      toast.success(`Workspace ${form?.name} has been created!`);
       queryClient.invalidateQueries({ queryKey: ["workspaces"] });
     },
     onError: () => {
-      toast.message("Failed to create workspace!");
+      toast.error("Failed to create workspace!");
     },
   });
   return mutation;

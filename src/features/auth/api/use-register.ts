@@ -27,7 +27,7 @@ export const useRegister = () => {
       queryClient.invalidateQueries({ queryKey: ["current"] });
     },
     onError: () => {
-      toast.message("Failed to sign up!");
+      toast.error("Failed to sign up!");
     },
   });
   return mutation;

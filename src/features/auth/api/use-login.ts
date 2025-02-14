@@ -20,12 +20,12 @@ export const useLogin = () => {
       return await response.json();
     },
     onSuccess: () => {
-      toast.message("Logged in successfully!");
+      toast.success("Logged in successfully!");
       router.refresh();
       queryClient.invalidateQueries({ queryKey: ["current"] });
     },
     onError: () => {
-      toast.message("Login Failed!");
+      toast.error("Login Failed!");
     },
   });
   return mutation;
