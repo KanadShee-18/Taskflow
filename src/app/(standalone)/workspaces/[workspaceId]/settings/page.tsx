@@ -24,7 +24,7 @@ const WorkspaceSettings = async ({ params }: SingleWorkspaceSettingsProps) => {
   }
 
   return (
-    <div className="relative h-full pt-32 w-full md:max-w-lg flex items-center justify-center mx-auto">
+    <div className="relative h-full pt-16 w-full md:max-w-lg flex items-center justify-center mx-auto">
       <EditWorkSpaceForm initialValues={initWorkspaceValues} />
     </div>
   );
