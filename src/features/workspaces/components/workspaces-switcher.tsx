@@ -1,8 +1,10 @@
 "use client";
 
+import { useRouter } from "next/navigation";
 import { RiAddCircleFill } from "react-icons/ri";
-
+import { useWorkspaceId } from "../hooks/workspaceId-hook";
 import { useGetWorkspaces } from "../api/use-get-workspaces";
+import { UseCreateWorkspaceModal } from "../hooks/use-create-workspace-modal";
 
 import {
   Select,
@@ -15,7 +17,15 @@ import { WorkspaceAvatar } from "./workspace-avatar";
 import { LayoutDashboard } from "lucide-react";
 
 export const WorkspaceSwitcher = () => {
+  const router = useRouter();
+  const workspaceId = useWorkspaceId();
   const { data: workspaces } = useGetWorkspaces();
+  const { open } = UseCreateWorkspaceModal();
+
+  const onWorkspaceSelect = (id: string) => {
+    router.push(`/workspaces/${id}`);
+  };
+
   return (
     <div className="flex flex-col gap-y-2">
       <div className="flex items-center justify-between">
@@ -25,9 +35,12 @@ export const WorkspaceSwitcher = () => {
             Workspaces
           </p>
         </span>
-        <RiAddCircleFill className="size-5 text-indigo-500 cursor-pointer hover:opacity-75 transition" />
+        <RiAddCircleFill
+          onClick={open}
+          className="size-5 text-indigo-500 cursor-pointer hover:opacity-75 transition"
+        />
       </div>
-      <Select>
+      <Select onValueChange={onWorkspaceSelect} value={workspaceId}>
         <SelectTrigger className="w-full text-muted-foreground bg-slate-200 font-medium p-1">
           <SelectValue placeholder="No Workspace Selected" />
         </SelectTrigger>

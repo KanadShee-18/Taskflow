@@ -15,7 +15,7 @@ const NavigationMenus = () => {
           <Link href={item.href} key={item.label}>
             <div
               className={cn(
-                "group flex text-sm items-center gap-2.5 p-2.5 rounded-md font-medium opacity-75 transition hover:text-indigo-700 text-indigo-500 hover:bg-slate-200",
+                "group flex text-sm items-center gap-2.5 p-2.5 rounded-md font-medium opacity-70 transition hover:text-slate-900 text-indigo-500 hover:bg-slate-200",
                 isActiveMenu &&
                   "bg-white shadow-sm hover:opacity-100 text-primary"
               )}
