@@ -18,7 +18,9 @@ import { DotterSeperator } from "@/components/dotted-seperator";
 import { Input } from "@/components/ui/input";
 import {
   ArrowLeftIcon,
+  CopyIcon,
   ImageIcon,
+  Link,
   Loader,
   Trash2,
   UserRoundPen,
@@ -32,6 +34,7 @@ import { Workspace } from "../types";
 import { useUpdateWorkspace } from "../api/use-update-workspace";
 import { useConfirm } from "@/hooks/user-confirmation-modal";
 import { useDeleteWorkspace } from "../api/use-delete-workspace";
+import { toast } from "sonner";
 
 interface EditWorkspaceFormProps {
   onCancel?: () => void;
@@ -74,7 +77,7 @@ export const EditWorkSpaceForm = ({
       },
       {
         onSuccess: () => {
-          router.push("/");
+          window.location.href = "/"; // for hard refresh
         },
       }
     );
@@ -101,6 +104,14 @@ export const EditWorkSpaceForm = ({
     if (file) {
       form.setValue("image", file);
     }
+  };
+
+  const inviteCodeLink = `${window.location.origin}/workspaces/${initialValues.$id}/join/${initialValues.inviteCode}`;
+
+  const handleCopyInviteLink = () => {
+    navigator.clipboard
+      .writeText(inviteCodeLink)
+      .then(() => toast.success("Invite link copied to clipboard."));
   };
 
   return (
@@ -258,6 +269,56 @@ export const EditWorkSpaceForm = ({
           </Form>
         </CardContent>
       </Card>
+      {/* Reset Invite Zone */}
+      <Card className="w-full h-full">
+        <CardContent className="p-7">
+          <div className="flex flex-col">
+            <div className="flex flex-row gap-x-5 items-start justify-center">
+              <div className="p-2 rounded-xl bg-indigo-600/15 shadow-sm shadow-slate-950">
+                <Link className="size-7 text-indigo-600" />
+              </div>
+              <div>
+                <h3 className="font-bold text-indigo-600">
+                  Invite Members to your workspace
+                </h3>
+                <p className="text-sm text-muted-foreground font-medium">
+                  Use this invite link to add your fellows to your workspace.
+                </p>
+                <div className="mt-4">
+                  <div className="flex items-center gap-x-2">
+                    <Input
+                      disabled
+                      value={inviteCodeLink}
+                      className="shadow-slate-400"
+                    />
+                    <Button
+                      onClick={handleCopyInviteLink}
+                      variant={"secondary"}
+                      className="size-10"
+                    >
+                      <CopyIcon className="!size-5" onClick={() => {}} />
+                    </Button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <Button
+              size={"sm"}
+              className="ml-auto mt-6"
+              variant={"destructive"}
+              type="button"
+              disabled={isDeletionPending}
+              onClick={handleDelete}
+            >
+              {isDeletionPending ? "DELETING" : "Delete Workspace"}
+              {isDeletionPending && <Loader className="animate-spin" />}
+            </Button>
+          </div>
+        </CardContent>
+      </Card>
+
+      {/* Danger Zone */}
       <Card className="w-full h-full bg-rose-500/10">
         <CardContent className="p-7">
           <div className="flex flex-col">
@@ -269,7 +330,7 @@ export const EditWorkSpaceForm = ({
                 <h3 className="font-bold text-rose-600">Danger Zone</h3>
                 <p className="text-sm text-muted-foreground font-medium">
                   You're going to delete this workspace which will remove all
-                  its assiciated data
+                  its associated data
                 </p>
               </div>
             </div>
