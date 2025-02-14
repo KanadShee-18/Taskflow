@@ -1,6 +1,6 @@
 import { redirect } from "next/navigation";
 
-import { getCurrent } from "@/features/auth/actions";
+import { getCurrent } from "@/features/auth/queries";
 import { WorkSpaceForm } from "@/features/workspaces/components/workspace-form";
 
 const WorkspaceCreate = async () => {

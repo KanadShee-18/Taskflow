@@ -1,8 +1,8 @@
 import React from "react";
 
-import { getCurrent } from "@/features/auth/actions";
+import { getCurrent } from "@/features/auth/queries";
 import { redirect } from "next/navigation";
-import { getWorkspaceById } from "@/features/workspaces/getWorkspacesAction";
+import { getWorkspaceById } from "@/features/workspaces/queries";
 import { EditWorkSpaceForm } from "@/features/workspaces/components/edit-workspace-form";
 
 interface SingleWorkspaceSettingsProps {
@@ -13,7 +13,7 @@ interface SingleWorkspaceSettingsProps {
 
 const WorkspaceSettings = async ({ params }: SingleWorkspaceSettingsProps) => {
   const user = await getCurrent();
-  if (!user) redirect("sign-in");
+  if (!user) redirect("/sign-in");
 
   const initWorkspaceValues = await getWorkspaceById({
     workspaceId: params.workspaceId,
