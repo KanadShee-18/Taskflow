@@ -22,6 +22,7 @@ import { useCreateWorkspace } from "../api/use-create-workspace";
 import { useRef } from "react";
 import Image from "next/image";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
+import { cn } from "@/lib/utils";
 
 interface CreateWorkspaceFormProps {
   onCancel?: () => void;
@@ -92,7 +93,7 @@ export const WorkSpaceForm = ({ onCancel }: CreateWorkspaceFormProps) => {
                         {...field}
                         disabled={isPending}
                         placeholder="Enter your workspace name"
-                        className="shadow-sm font-medium tracking-wide text-indigo-600 shadow-indigo-500"
+                        className="shadow-sm font-medium tracking-wide text-indigo-600 shadow-slate-400"
                       />
                     </FormControl>
                     <FormMessage className="text-rose-500 tracking-wide text-sm" />
@@ -160,7 +161,12 @@ export const WorkSpaceForm = ({ onCancel }: CreateWorkspaceFormProps) => {
               <DotterSeperator />
             </div>
             <div className="flex items-center mt-10 w-full justify-between">
-              <Button type="button" variant={"outline"} onClick={onCancel}>
+              <Button
+                className={cn(!onCancel && "invisible")}
+                type="button"
+                variant={"outline"}
+                onClick={onCancel}
+              >
                 Cancel
               </Button>
               <Button
