@@ -10,7 +10,7 @@ interface StandaloneLayoutProps {
 const StandaloneLayout = ({ children }: StandaloneLayoutProps) => {
   return (
     <main className="bg-neutral-100 min-h-screen">
-      <div className="absolute inset-0 min-h-full z-0 w-full bg-white bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:16px_16px]"></div>
+      <div className="inset-0 fixed min-h-full z-0 w-full bg-white bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:16px_16px]"></div>
       <div className="mx-auto max-w-screen-2xl p-4">
         <nav className="flex relative justify-between items-center h-20">
           <Link href={"/"}>

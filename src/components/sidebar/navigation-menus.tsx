@@ -6,7 +6,7 @@ import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { usePathname } from "next/navigation";
 import { useWorkspaceId } from "@/features/workspaces/hooks/workspaceId-hook";
-// 6 46 20
+
 const NavigationMenus = () => {
   const pathname = usePathname();
   const workspaceId = useWorkspaceId();

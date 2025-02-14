@@ -35,6 +35,7 @@ import { useUpdateWorkspace } from "../api/use-update-workspace";
 import { useConfirm } from "@/hooks/user-confirmation-modal";
 import { useDeleteWorkspace } from "../api/use-delete-workspace";
 import { toast } from "sonner";
+import { useResetInvitationCode } from "../api/use-reset-invitation-code";
 
 interface EditWorkspaceFormProps {
   onCancel?: () => void;
@@ -50,9 +51,18 @@ export const EditWorkSpaceForm = ({
   const { mutate: deleteWorkspace, isPending: isDeletionPending } =
     useDeleteWorkspace();
 
+  const { mutate: resetInviteCode, isPending: isInvitationCodePending } =
+    useResetInvitationCode();
+
   const [DialogForDelete, confirmDeleteAction] = useConfirm(
     "Delete this Workspace",
     "This action can't be undone!",
+    "destructive"
+  );
+
+  const [ResetCodeDialog, confirmResetCode] = useConfirm(
+    "Reset Invite Link",
+    "This will invalidate the current invite link!",
     "destructive"
   );
 
@@ -78,6 +88,22 @@ export const EditWorkSpaceForm = ({
       {
         onSuccess: () => {
           window.location.href = "/"; // for hard refresh
+        },
+      }
+    );
+  };
+  const handleResetInviteLink = async () => {
+    const ok = await confirmResetCode();
+    if (!ok) return;
+    resetInviteCode(
+      {
+        param: {
+          workspaceId: initialValues.$id,
+        },
+      },
+      {
+        onSuccess: () => {
+          router.refresh();
         },
       }
     );
@@ -117,6 +143,7 @@ export const EditWorkSpaceForm = ({
   return (
     <div className="flex flex-col gap-y-4">
       <DialogForDelete />
+      <ResetCodeDialog />
       <Card className="w-full max-w-3xl mx-auto h-full">
         <CardHeader className="flex p-6 flex-row justify-between items-center">
           <CardTitle className="md:text-xl text-lg flex gap-2 font-bold text-indigo-500">
@@ -172,7 +199,7 @@ export const EditWorkSpaceForm = ({
                   name="image"
                   render={({ field }) => (
                     <div className="flex flex-col gap-y-2">
-                      <div className="flex items-center gap-x-5">
+                      <div className="flex items-center gap-x-5 md:gap-x-10">
                         {field.value ? (
                           <div className="size-16 relative rounded-md overflow-hidden">
                             <Image
@@ -193,7 +220,7 @@ export const EditWorkSpaceForm = ({
                             </AvatarFallback>
                           </Avatar>
                         )}
-                        <div className="flex flex-col mt-5">
+                        <div className="flex flex-col">
                           <p className="text-sm text-indigo-500 font-semibold">
                             Workspce Icon
                           </p>
@@ -255,6 +282,7 @@ export const EditWorkSpaceForm = ({
                   Cancel
                 </Button>
                 <Button
+                  size={"sm"}
                   type="submit"
                   variant={"primary"}
                   className="tracking-wide"
@@ -269,6 +297,7 @@ export const EditWorkSpaceForm = ({
           </Form>
         </CardContent>
       </Card>
+
       {/* Reset Invite Zone */}
       <Card className="w-full h-full">
         <CardContent className="p-7">
@@ -302,24 +331,23 @@ export const EditWorkSpaceForm = ({
                 </div>
               </div>
             </div>
-
+            <DotterSeperator className="py-7" />
             <Button
               size={"sm"}
-              className="ml-auto mt-6"
-              variant={"destructive"}
+              className="ml-auto"
+              variant={"secondary"}
               type="button"
-              disabled={isDeletionPending}
-              onClick={handleDelete}
+              disabled={isPending || isInvitationCodePending}
+              onClick={handleResetInviteLink}
             >
-              {isDeletionPending ? "DELETING" : "Delete Workspace"}
-              {isDeletionPending && <Loader className="animate-spin" />}
+              Reset Invite Link
             </Button>
           </div>
         </CardContent>
       </Card>
 
       {/* Danger Zone */}
-      <Card className="w-full h-full bg-rose-500/10">
+      <Card className="w-full h-full bg-rose-500/10 backdrop-blur-md">
         <CardContent className="p-7">
           <div className="flex flex-col">
             <div className="flex flex-row gap-x-5 items-center">
@@ -334,13 +362,13 @@ export const EditWorkSpaceForm = ({
                 </p>
               </div>
             </div>
-
+            <DotterSeperator className="py-7" />
             <Button
               size={"sm"}
-              className="ml-auto mt-6"
+              className="ml-auto"
               variant={"destructive"}
               type="button"
-              disabled={isDeletionPending}
+              disabled={isPending || isDeletionPending}
               onClick={handleDelete}
             >
               {isDeletionPending ? "DELETING" : "Delete Workspace"}
