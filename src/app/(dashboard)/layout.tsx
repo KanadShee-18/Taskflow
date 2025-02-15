@@ -14,6 +14,7 @@ const DashboardLayout = ({ children }: DashboardLayoutProps) => {
       <CreateWorkspaceModal />
       <CreateProjectModal />
       <div className="flex w-full h-full">
+        <div className="absolute inset-0 h-full z-0 w-full bg-white bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:20px_20px]"></div>
         <div className="fixed top-0 left-0 hidden lg:block lg:w-[264px] h-full overflow-y-auto">
           <Sidebar />
         </div>

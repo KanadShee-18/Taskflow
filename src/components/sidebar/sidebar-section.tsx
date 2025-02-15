@@ -10,7 +10,7 @@ import { Projects } from "./projects";
 
 const Sidebar = () => {
   return (
-    <aside className="h-full bg-zinc-100 p-4 w-full">
+    <aside className="h-full relative bg-zinc-100 p-4 w-full">
       <Link href={"/"} className="w-full flex items-center justify-start">
         <div className="flex items-center gap-3 w-fit">
           <Image src={"/logo.jpg"} alt="TaskFlow" width={45} height={50} />
