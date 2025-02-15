@@ -10,6 +10,8 @@ import { useGetTasks } from "../api/use-get-tasks";
 import { useWorkspaceId } from "@/features/workspaces/hooks/workspaceId-hook";
 import { DataFilters } from "./data-filters";
 import { useTaskFilters } from "../hooks/use-tasks-filters";
+import { DataTable } from "./data-table";
+import { columns } from "./columns";
 
 export const TaskViewSwitcher = () => {
   const [{ status, search, assigneeId, projectId, dueDate }] = useTaskFilters();
@@ -47,9 +49,13 @@ export const TaskViewSwitcher = () => {
               Calendar
             </TabsTrigger>
           </TabsList>
-          <Button onClick={open} size={"sm"} className="w-full lg:w-auto">
-            <PlusIcon className="!size-3" />
-            New
+          <Button
+            onClick={open}
+            size={"sm"}
+            className="w-full tracking-wider lg:w-auto"
+          >
+            <PlusIcon />
+            NEW TASK
           </Button>
         </div>
         <DotterSeperator className="my-4" />
@@ -62,7 +68,7 @@ export const TaskViewSwitcher = () => {
         ) : (
           <>
             <TabsContent value="table" className="mt-0">
-              {JSON.stringify(tasks)}
+              <DataTable columns={columns} data={tasks?.documents ?? []} />
             </TabsContent>
             <TabsContent value="kanban" className="mt-0">
               {JSON.stringify(tasks)}
