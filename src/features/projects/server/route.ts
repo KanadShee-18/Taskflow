@@ -8,7 +8,8 @@ import { sessionMiddleware } from "@/lib/session-middleware";
 import { getMember } from "@/features/member/utils";
 
 import { DATABASE_ID, IMAGES_BUCKET_ID, PROJECTS_ID } from "@/utils/config";
-import { createProjectSchema } from "../schemas";
+import { createProjectSchema, updateProjectSchema } from "../schemas";
+import { Project } from "../types";
 
 const app = new Hono()
   .get(
@@ -92,6 +93,129 @@ const app = new Hono()
         data: project,
       });
     }
-  );
+  )
+  .patch(
+    "/:projectId",
+    sessionMiddleware,
+    zValidator("form", updateProjectSchema),
+    async (c) => {
+      try {
+        const databases = c.get("databases");
+        const storage = c.get("storage");
+        const user = c.get("user");
+
+        const { projectId } = c.req.param();
+        const { name, image } = c.req.valid("form");
+
+        const existingProject = await databases.getDocument<Project>(
+          DATABASE_ID,
+          PROJECTS_ID,
+          projectId
+        );
+
+        if (!existingProject) {
+          return c.json(
+            {
+              error: "No such project is available with this id!",
+            },
+            404
+          );
+        }
+
+        const isMember = await getMember({
+          databases,
+          workspaceId: existingProject.workspaceId,
+          userId: user.$id,
+        });
+
+        if (!isMember) {
+          return c.json(
+            {
+              error: "Unauthorized",
+            },
+            401
+          );
+        }
+
+        let uploadedImageUrl: string | undefined;
+
+        if (image instanceof File) {
+          const file = await storage.createFile(
+            IMAGES_BUCKET_ID,
+            ID.unique(),
+            image
+          );
+          const arrayBuffer = await storage.getFilePreview(
+            IMAGES_BUCKET_ID,
+            file.$id
+          );
+          uploadedImageUrl = `data:image/png;base64,${Buffer.from(
+            arrayBuffer
+          ).toString("base64")}`;
+        } else {
+          uploadedImageUrl = image;
+        }
+
+        const project = await databases.updateDocument(
+          DATABASE_ID,
+          PROJECTS_ID,
+          projectId,
+          {
+            name,
+            imageUrl: uploadedImageUrl,
+          }
+        );
+
+        return c.json({
+          data: project,
+          success: true,
+          message: "Project has been updated successfully!",
+        });
+      } catch (error) {
+        console.log("Error in updating project: ", error);
+        return c.json({
+          success: false,
+          message: "Not able to update project!",
+          error: error,
+        });
+      }
+    }
+  )
+  .delete("/:projectId", sessionMiddleware, async (c) => {
+    const databases = c.get("databases");
+    const user = c.get("user");
+    const { projectId } = c.req.param();
+
+    const existingProject = await databases.getDocument<Project>(
+      DATABASE_ID,
+      PROJECTS_ID,
+      projectId
+    );
+
+    if (!existingProject) {
+      return c.json(
+        {
+          error: "No such project is available with this id!",
+        },
+        404
+      );
+    }
+
+    const isMember = await getMember({
+      databases,
+      userId: user.$id,
+      workspaceId: existingProject.workspaceId,
+    });
+
+    if (!isMember) {
+      return c.json({ error: "Unauthorized" }, 401);
+    }
+
+    // TODO: Delete members, projects and tasks
+
+    await databases.deleteDocument(DATABASE_ID, PROJECTS_ID, projectId);
+
+    return c.json({ data: { $id: existingProject.$id } });
+  });
 
 export default app;

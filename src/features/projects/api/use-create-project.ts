@@ -4,7 +4,10 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { client } from "@/lib/rpc";
 import { toast } from "sonner";
 
-type ResponseType = InferResponseType<(typeof client.api.projects)["$post"], 200>;
+type ResponseType = InferResponseType<
+  (typeof client.api.projects)["$post"],
+  200
+>;
 type RequestType = InferRequestType<(typeof client.api.projects)["$post"]>;
 
 export const useCreateProject = () => {
@@ -20,7 +23,7 @@ export const useCreateProject = () => {
     },
     onSuccess: (_, { form }) => {
       toast.success(`Project ${form?.name} has been created!`);
-      queryClient.invalidateQueries({ queryKey: ["workspaces"] });
+      queryClient.invalidateQueries({ queryKey: ["projects"] });
     },
     onError: () => {
       toast.error("Failed to create project!");
