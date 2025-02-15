@@ -6,6 +6,7 @@ import React from "react";
 import { DotterSeperator } from "../dotted-seperator";
 import NavigationMenus from "./navigation-menus";
 import { WorkspaceSwitcher } from "@/features/workspaces/components/workspaces-switcher";
+import { Projects } from "./projects";
 
 const Sidebar = () => {
   return (
@@ -20,6 +21,8 @@ const Sidebar = () => {
       <WorkspaceSwitcher />
       <DotterSeperator className="my-4" />
       <NavigationMenus />
+      <DotterSeperator className="my-4" />
+      <Projects />
     </aside>
   );
 };
