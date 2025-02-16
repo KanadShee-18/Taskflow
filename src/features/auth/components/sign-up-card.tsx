@@ -52,17 +52,17 @@ export const SignUpCard = () => {
   return (
     <Card className="w-full h-full md:w-[450px]">
       <CardHeader className="text-center p-7 flex items-center justify-center">
-        <CardTitle className="text-2xl text-slate-800">Sign Up</CardTitle>
+        <CardTitle className="text-2xl text-indigo-600">Sign Up</CardTitle>
         <CardDescription>
           By signing up, you agree to our{" "}
           <Link href={"/privacy"}>
-            <span className="text-indigo-700 hover:underline">
+            <span className="text-indigo-500 font-semibold hover:underline">
               Privacy Policy
             </span>
           </Link>{" "}
           and{" "}
           <Link href={"/terms"}>
-            <span className="text-indigo-700 hover:underline">
+            <span className="text-indigo-500 font-semibold hover:underline">
               Terms of Service
             </span>
           </Link>
@@ -90,7 +90,7 @@ export const SignUpCard = () => {
                       name="name"
                       disabled={isPending}
                       placeholder="Enter your name"
-                      className="shadow-sm shadow-indigo-500 outline-none"
+                      className="shadow-sm shadow-slate-400 outline-none"
                     />
                   </FormControl>
                   <FormMessage className="text-rose-500" />
@@ -110,7 +110,7 @@ export const SignUpCard = () => {
                       type="email"
                       name="email"
                       placeholder="Enter email address"
-                      className="shadow-sm shadow-indigo-500 outline-none"
+                      className="shadow-sm shadow-slate-400 outline-none"
                     />
                   </FormControl>
                   <FormMessage className="text-rose-500" />
@@ -137,7 +137,7 @@ export const SignUpCard = () => {
                         type={showPassword ? "text" : "password"}
                         name="password"
                         placeholder="Enter a strong password"
-                        className="pr-12"
+                        className="pr-12 shadow-sm shadow-slate-400"
                         min={8}
                         max={256}
                       />

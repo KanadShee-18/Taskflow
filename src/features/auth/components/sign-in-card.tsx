@@ -70,7 +70,7 @@ export const SignInCard = () => {
                       type="email"
                       name="email"
                       placeholder="Enter email address"
-                      className="shadow-sm shadow-indigo-500 outline-none"
+                      className="shadow-sm shadow-slate-400 outline-none"
                     />
                   </FormControl>
                   <FormMessage className="text-rose-500" />
@@ -97,7 +97,7 @@ export const SignInCard = () => {
                         type={showPassword ? "text" : "password"}
                         name="password"
                         placeholder="Enter your password"
-                        className="pr-12"
+                        className="pr-12 shadow-sm shadow-slate-400"
                         min={8}
                         max={256}
                       />

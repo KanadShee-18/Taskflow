@@ -2,6 +2,7 @@ import { DashboardNav } from "@/components/dashborad-navbar";
 import Sidebar from "@/components/sidebar/sidebar-section";
 import CreateProjectModal from "@/features/projects/components/create-project-modal";
 import { CreateTaskModal } from "@/features/tasks/components/create-task-modal";
+import { EditTaskModal } from "@/features/tasks/components/edit-task-modal";
 import CreateWorkspaceModal from "@/features/workspaces/components/create-workspace-modal";
 import React from "react";
 
@@ -15,6 +16,7 @@ const DashboardLayout = ({ children }: DashboardLayoutProps) => {
       <CreateWorkspaceModal />
       <CreateProjectModal />
       <CreateTaskModal />
+      <EditTaskModal />
       <div className="flex w-full h-full">
         <div className="absolute inset-0 h-full z-0 w-full bg-white bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:20px_20px]"></div>
         <div className="fixed top-0 left-0 hidden lg:block lg:w-[264px] h-full overflow-y-auto">
