@@ -27,7 +27,7 @@ const ProjectIdPage = async ({ params }: ProjectIdPageProps) => {
     throw new Error("Project not found!");
   }
   return (
-    <div className="relative flex flex-col gap-y-4">
+    <div className="flex relative flex-col gap-y-4">
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-x-2">
           <ProjectAvatar
@@ -50,6 +50,7 @@ const ProjectIdPage = async ({ params }: ProjectIdPageProps) => {
           </Button>
         </div>
       </div>
+
       <TaskViewSwitcher />
     </div>
   );
