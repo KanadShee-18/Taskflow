@@ -1,36 +1,66 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# TaskFlow
 
-## Getting Started
+[Visit my site](https://taskflow-agile-pm.vercel.app)
+TaskFlow is an **Agile Project Management Tool** designed to help teams efficiently manage their projects and tasks. It provides an intuitive interface for **workspace management, project tracking, task handling, and analytics** with multiple views like **Kanban, Calendar, and Data Tables**.
 
-First, run the development server:
+![TaskFlow Banner](public/Images/project-kanban.png)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## ✨ Features
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- **Authentication**: Secure login via OAuth (Google, GitHub) or email-password.
+- **Workspaces**: Create, modify, delete workspaces & invite team members.
+- **Projects**: Manage projects inside workspaces with full CRUD operations.
+- **Task Management**: Create, update, delete tasks, assign users, and track progress.
+- **Multiple Views**:
+  - 📊 **Data Table View** for structured project tracking.
+  - 📌 **Kanban View** for drag-and-drop task management.
+  - 📅 **Calendar View** to track deadlines visually.
+- **Analytics Dashboard**:
+  - 📈 **Project Analytics**: Insights into project performance.
+  - 🏢 **Workspace Analytics**: Overview of workspace activities.
+- **Real-time Collaboration**: Users can work together efficiently within a shared workspace.
+- **Notifications**: Stay updated with task changes and assignments.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 🚀 Tech Stack
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- **Frontend**: [Next.js](https://nextjs.org/) (React Framework)
+- **Backend**: [Hono](https://hono.dev/) (Fast Edge API framework)
+- **Database & Authentication**: [Appwrite](https://appwrite.io/) (Cloud backend for authentication, database, and storage)
+- **State Management**: [TanStack Query](https://tanstack.com/query/latest) (Efficient API data fetching & caching)
+- **Styling**: [Tailwind CSS](https://tailwindcss.com/) (Modern utility-first CSS)
 
-## Learn More
+## 📸 Screenshots
 
-To learn more about Next.js, take a look at the following resources:
+### 🔑 Authentication
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+![Authentication](public/Images/authentication.png)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### 🏢 Workspaces
 
-## Deploy on Vercel
+![Workspaces](public/Images/workspace.png)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### 📌 Kanban Board
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+![Kanban View](public/Images/project-kanban.png)
+
+### 📅 Calendar View
+
+![Calendar View](public/Images/project-calendar.png)
+
+### 📊 Project Analytics
+
+![Project Analytics](public/Images/project-analytics.png)
+
+### 🏢 Workspace Analytics
+
+![Workspace Analytics](public/Images/home-analytics.png)
+
+## 🤝 Contributing
+
+We welcome contributions! Feel free to open issues or create pull requests.
+
+---
+
+💡 _TaskFlow: Simplifying Agile Project Management!_
+
+If you like this project, please give it a ⭐ and feel free to contribute! 🙌

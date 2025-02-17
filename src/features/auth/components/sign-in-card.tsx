@@ -43,7 +43,7 @@ export const SignInCard = () => {
   };
 
   return (
-    <Card className="w-full h-full md:w-[450px]">
+    <Card className="w-full bg-indigo-50 h-full md:w-[450px]">
       <CardHeader className="text-center p-7 flex items-center justify-center">
         <CardTitle className="text-2xl text-indigo-600 font-semibold">
           Welcome Back
@@ -134,7 +134,7 @@ export const SignInCard = () => {
       <CardContent className="p-7 flex flex-col gap-y-4">
         <Button
           onClick={() => signUpWithGoogle()}
-          className="w-full"
+          className="w-full bg-indigo-100"
           disabled={false}
           variant={"secondary"}
           size={"lg"}
@@ -144,7 +144,7 @@ export const SignInCard = () => {
         </Button>
         <Button
           onClick={() => signUpWithGithub()}
-          className="w-full"
+          className="w-full bg-indigo-100"
           disabled={false}
           variant={"secondary"}
           size={"lg"}

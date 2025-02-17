@@ -30,9 +30,9 @@ export default function RootLayout({
               style: {
                 backgroundColor: "rgb(129, 122, 255)",
                 background:
-                  "linear-gradient(90deg, rgb(129, 122, 255, 1) 22%, rgba(235,235,237,0.85) 100%)",
+                  "linear-gradient(90deg, rgb(129, 122, 255, 1) 82%, rgba(235,235,237,0.85) 100%)",
                 border: "none",
-                color: "#13131c",
+                color: "#ffffff",
               },
             }}
             className={`${inter.className} font-semibold`}
