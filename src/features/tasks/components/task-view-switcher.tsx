@@ -18,7 +18,13 @@ import { TaskStatus } from "../types";
 import { useBulkUpdatesTask } from "../api/use-bulk-updates-task";
 import { DataCalenar } from "./data-calendar";
 
-export const TaskViewSwitcher = () => {
+interface TaskViewSwitcherProps {
+  hideProjectFilter?: boolean;
+}
+
+export const TaskViewSwitcher = ({
+  hideProjectFilter,
+}: TaskViewSwitcherProps) => {
   const [{ status, search, assigneeId, projectId, dueDate }] = useTaskFilters();
 
   const { mutate: bulkUpdateTasks } = useBulkUpdatesTask();
@@ -76,7 +82,7 @@ export const TaskViewSwitcher = () => {
           </Button>
         </div>
         <DotterSeperator className="my-4" />
-        <DataFilters />
+        <DataFilters hideProjectFilters={hideProjectFilter} />
         <DotterSeperator className="my-4" />
         {isTasksLoading ? (
           <div className="w-full h-[200px] flex flex-col items-center justify-center border rounded-lg ">
