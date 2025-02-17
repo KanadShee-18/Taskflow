@@ -29,6 +29,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { SignUpSchema } from "@/features/auth/schemas";
 import { useRegister } from "@/features/auth/api/use-register";
 import { ChevronRight, Loader } from "lucide-react";
+import { signUpWithGithub, signUpWithGoogle } from "@/lib/oauth";
 
 export const SignUpCard = () => {
   const { mutate, isPending } = useRegister();
@@ -172,6 +173,7 @@ export const SignUpCard = () => {
       </div>
       <CardContent className="p-7 flex flex-col gap-y-4">
         <Button
+          onClick={() => signUpWithGoogle()}
           className="w-full"
           disabled={false}
           variant={"secondary"}
@@ -181,6 +183,7 @@ export const SignUpCard = () => {
           Login with Google
         </Button>
         <Button
+          onClick={() => signUpWithGithub()}
           className="w-full"
           disabled={false}
           variant={"secondary"}

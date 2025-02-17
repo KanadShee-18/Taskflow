@@ -59,7 +59,9 @@ export const MembersList = () => {
       { param: { memberId } },
       {
         onSuccess: () => {
-          typeof window !== "undefined" && window.location.reload();
+          if (typeof window !== "undefined") {
+            window.location.reload();
+          }
         },
       }
     );

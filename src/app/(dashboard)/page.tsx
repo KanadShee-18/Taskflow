@@ -1,12 +1,14 @@
 import { getCurrent } from "@/features/auth/queries";
 import { getWorkspaces } from "@/features/workspaces/queries";
+import Landing from "@/static/landing-page";
 import { redirect } from "next/navigation";
 
 export default async function Home() {
   const user = await getCurrent();
 
   if (!user) {
-    redirect("/sign-in");
+    // redirect("/sign-in");
+    return <Landing />;
   }
 
   const workspaces = await getWorkspaces();

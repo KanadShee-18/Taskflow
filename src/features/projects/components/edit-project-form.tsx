@@ -18,9 +18,7 @@ import { DotterSeperator } from "@/components/dotted-seperator";
 import { Input } from "@/components/ui/input";
 import {
   ArrowLeftIcon,
-  CopyIcon,
   ImageIcon,
-  Link,
   Loader,
   Trash2,
   UserRoundPen,
@@ -33,7 +31,6 @@ import { cn } from "@/lib/utils";
 import { Project } from "../types";
 import { useUpdateProject } from "../api/use-update-project";
 import { useConfirm } from "@/hooks/user-confirmation-modal";
-import { toast } from "sonner";
 import { useDeleteProject } from "../api/use-delete-project";
 
 interface EditProjectFormProps {
@@ -269,7 +266,7 @@ export const EditProjectForm = ({
               <div>
                 <h3 className="font-bold text-rose-600">Danger Zone</h3>
                 <p className="text-sm text-muted-foreground font-medium">
-                  You're going to delete this project which will remove all its
+                  You&apos;re going to delete this project which will remove all its
                   associated data related to this project
                 </p>
               </div>

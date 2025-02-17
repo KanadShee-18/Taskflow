@@ -24,7 +24,6 @@ import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { cn } from "@/lib/utils";
 import { useCreateProject } from "../api/use-create-project";
 import { useWorkspaceId } from "@/features/workspaces/hooks/workspaceId-hook";
-import { toast } from "sonner";
 
 interface CreateProjectFormProps {
   onCancel?: () => void;

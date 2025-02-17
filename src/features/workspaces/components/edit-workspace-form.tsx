@@ -345,7 +345,7 @@ export const EditWorkSpaceForm = ({
               <div>
                 <h3 className="font-bold text-rose-600">Danger Zone</h3>
                 <p className="text-sm text-muted-foreground font-medium">
-                  You're going to delete this workspace which will remove all
+                  You&apos;re going to delete this workspace which will remove all
                   its associated data
                 </p>
               </div>

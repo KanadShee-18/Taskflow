@@ -22,7 +22,8 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import Link from "next/link";
 import { SignInSchema } from "@/features/auth/schemas";
 import { useLogin } from "@/features/auth/api/use-login";
-import { ChevronRight, Loader, Loader2 } from "lucide-react";
+import { ChevronRight, Loader } from "lucide-react";
+import { signUpWithGithub, signUpWithGoogle } from "@/lib/oauth";
 
 export const SignInCard = () => {
   const { mutate, isPending } = useLogin();
@@ -124,7 +125,7 @@ export const SignInCard = () => {
           href={"/sign-up"}
           className="text-sm font-medium text-muted-foreground hover:text-indigo-500 hover:underline cursor-pointer"
         >
-          Don't have an account?
+          Don&apos;t have an account?
         </Link>
       </div>
       <div className="px-7">
@@ -132,6 +133,7 @@ export const SignInCard = () => {
       </div>
       <CardContent className="p-7 flex flex-col gap-y-4">
         <Button
+          onClick={() => signUpWithGoogle()}
           className="w-full"
           disabled={false}
           variant={"secondary"}
@@ -141,6 +143,7 @@ export const SignInCard = () => {
           Login with Google
         </Button>
         <Button
+          onClick={() => signUpWithGithub()}
           className="w-full"
           disabled={false}
           variant={"secondary"}

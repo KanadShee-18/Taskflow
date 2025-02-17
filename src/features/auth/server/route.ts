@@ -19,7 +19,7 @@ const app = new Hono()
         },
         200
       );
-    } catch (error) {
+    } catch {
       return c.json(
         {
           success: false,

@@ -7,12 +7,12 @@ import { MemberAvatar } from "@/features/member/components/member-avatar";
 import { ProjectAvatar } from "@/features/projects/components/project-avatar";
 import { useWorkspaceId } from "@/features/workspaces/hooks/workspaceId-hook";
 import { useRouter } from "next/navigation";
-import React from "react";
+import { Member } from "@/features/member/types";
 
 interface EventCardProps {
   id: string;
   title: string;
-  assignee: any;
+  assignee: Member;
   project: Project;
   status: TaskStatus;
 }

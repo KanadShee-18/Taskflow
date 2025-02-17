@@ -51,7 +51,6 @@ export const WorkSpaceForm = ({ onCancel }: CreateWorkspaceFormProps) => {
       {
         onSuccess: ({ data }) => {
           form.reset();
-          //NOTE: redirect to our new workspace after creation
           router.push(`/workspaces/${data.$id}`);
         },
       }
@@ -66,7 +65,7 @@ export const WorkSpaceForm = ({ onCancel }: CreateWorkspaceFormProps) => {
   };
 
   return (
-    <Card className="w-full max-w-3xl mx-auto h-full border-none shadow-none">
+    <Card className="w-full max-w-3xl mx-auto h-full border-none shadow-sm shadow-slate-400">
       <CardHeader className="flex p-6">
         <CardTitle className="text-xl flex gap-2 font-bold text-indigo-500">
           <Workflow />
