@@ -1,6 +1,6 @@
 "use client";
 
-import ErrorPage from "@/app/(dashboard)/error";
+import ErrorPage from "@/app/error";
 import { DotterSeperator } from "@/components/dotted-seperator";
 import PageLoader from "@/components/page-loader";
 import { useGetSingleTask } from "@/features/tasks/api/use-get-single-task";

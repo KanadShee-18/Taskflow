@@ -1,6 +1,6 @@
 "use client";
 
-import ErrorPage from "@/app/(dashboard)/error";
+import ErrorPage from "@/app/error";
 import PageLoader from "@/components/page-loader";
 import { useGetProject } from "@/features/projects/api/use-get-project";
 import { EditProjectForm } from "@/features/projects/components/edit-project-form";

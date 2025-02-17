@@ -1,6 +1,6 @@
 "use client";
 
-import ErrorPage from "@/app/(dashboard)/error";
+import ErrorPage from "@/app/error";
 import PageLoader from "@/components/page-loader";
 import { useGetWorkspace } from "@/features/workspaces/api/use-get-workspace";
 import { EditWorkSpaceForm } from "@/features/workspaces/components/edit-workspace-form";

@@ -1,15 +1,11 @@
 "use client";
 
-import Image from "next/image";
+import PageLoader from "@/components/page-loader";
 import React from "react";
 
 const LoadingState = () => {
   return (
-    <div className="h-full pt-32 flex items-center justify-center">
-      <div className="animate-pulse">
-        <Image src={"/logo.jpg"} alt="TaskFlow" width={140} height={90} />
-      </div>
-    </div>
+    <PageLoader />
   );
 };
 

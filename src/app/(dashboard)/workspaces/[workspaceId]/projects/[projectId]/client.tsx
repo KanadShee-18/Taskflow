@@ -1,9 +1,11 @@
 "use client";
 
-import ErrorPage from "@/app/(dashboard)/error";
+import ErrorPage from "@/app/error";
 import PageLoader from "@/components/page-loader";
 import { Button } from "@/components/ui/button";
 import { useGetProject } from "@/features/projects/api/use-get-project";
+import { useGetProjectAnalytics } from "@/features/projects/api/use-get-project-analytics";
+import { ProjectAnalytics } from "@/features/projects/components/project-analytics";
 import { ProjectAvatar } from "@/features/projects/components/project-avatar";
 import { useProjectId } from "@/features/projects/hook/use-project-id";
 import { TaskViewSwitcher } from "@/features/tasks/components/task-view-switcher";
@@ -12,13 +14,19 @@ import Link from "next/link";
 
 export const ProjectIdClientPage = () => {
   const projectId = useProjectId();
-  const { data, isLoading } = useGetProject({ projectId });
+  const { data: projectDetails, isLoading: isProjectLoading } = useGetProject({
+    projectId,
+  });
+  const { data: projectAnalytics, isLoading: projectAnalyticsLoading } =
+    useGetProjectAnalytics({ projectId });
+
+  const isLoading = isProjectLoading || projectAnalyticsLoading;
 
   if (isLoading) {
     return <PageLoader />;
   }
 
-  if (!data) {
+  if (!projectDetails) {
     return <ErrorPage message="Project Details not found!" />;
   }
 
@@ -27,16 +35,18 @@ export const ProjectIdClientPage = () => {
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-x-2">
           <ProjectAvatar
-            name={data.name}
-            image={data.imageUrl}
+            name={projectDetails.name}
+            image={projectDetails.imageUrl}
             className="size-8"
           />
-          <p className="text-lg font-semibold text-indigo-600">{data.name}</p>
+          <p className="text-lg font-semibold text-indigo-600">
+            {projectDetails.name}
+          </p>
         </div>
         <div>
           <Button size={"sm"} variant={"secondary"} asChild>
             <Link
-              href={`/workspaces/${data.workspaceId}/projects/${data.$id}/settings`}
+              href={`/workspaces/${projectDetails.workspaceId}/projects/${projectDetails.$id}/settings`}
             >
               <PencilIcon className="!size-4 mr-2" />
               Edit Project
@@ -44,7 +54,7 @@ export const ProjectIdClientPage = () => {
           </Button>
         </div>
       </div>
-
+      {projectAnalytics && <ProjectAnalytics data={projectAnalytics} />}
       <TaskViewSwitcher hideProjectFilter />
     </div>
   );

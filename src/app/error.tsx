@@ -5,7 +5,11 @@ import { AlertTriangle } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
-const ErrorPage = () => {
+interface ErrorPageProps {
+  message?: string;
+}
+
+const ErrorPage = ({ message }: ErrorPageProps) => {
   return (
     <div className="h-screen flex flex-col gap-y-2 items-center justify-center">
       <div className="fixed w-full h-full flex flex-col items-center justify-center">
@@ -22,7 +26,7 @@ const ErrorPage = () => {
           <div className="flex flex-row gap-4 items-center text-rose-500">
             <AlertTriangle className="size-10 md:size-20" />
             <p className="text-sm md:text-3xl md:font-semibold">
-              Something went wrong!
+              {message ? `${message}` : "Something Went Wrong"}
             </p>
           </div>
           <Button variant={"secondary"} size={"sm"} asChild>
