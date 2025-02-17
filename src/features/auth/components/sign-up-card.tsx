@@ -46,7 +46,6 @@ export const SignUpCard = () => {
   });
 
   const onFormSubmit = (values: z.infer<typeof SignUpSchema>) => {
-    console.log("Values: ", values);
     mutate({ json: values });
   };
 
