@@ -87,7 +87,7 @@ export const EditWorkSpaceForm = ({
       },
       {
         onSuccess: () => {
-          window.location.href = "/"; // for hard refresh
+          window.location.href = "/";
         },
       }
     );
@@ -107,14 +107,7 @@ export const EditWorkSpaceForm = ({
       ...values,
       image: values.image instanceof File ? values.image : "",
     };
-    mutate(
-      { form: finalValues, param: { workspaceId: initialValues.$id } },
-      {
-        onSuccess: ({ data }) => {
-          form.reset();
-        },
-      }
-    );
+    mutate({ form: finalValues, param: { workspaceId: initialValues.$id } });
   };
 
   const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
