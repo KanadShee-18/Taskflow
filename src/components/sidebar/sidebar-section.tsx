@@ -2,7 +2,6 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
 import { DotterSeperator } from "../dotted-seperator";
 import NavigationMenus from "./navigation-menus";
 import { WorkspaceSwitcher } from "@/features/workspaces/components/workspaces-switcher";

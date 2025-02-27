@@ -1,4 +1,3 @@
-import React from "react";
 import { ProjectAnalyticsResponseType } from "@/features/projects/api/use-get-project-analytics";
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
 import { AnalyticsCard } from "./analytics-card";

@@ -1,6 +1,5 @@
 "use client";
 
-import React from "react";
 import { NAVIGATION_ITEMS } from "@/utils/constants";
 import Link from "next/link";
 import { cn } from "@/lib/utils";

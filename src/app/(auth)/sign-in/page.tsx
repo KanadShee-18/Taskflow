@@ -1,7 +1,6 @@
 import { getCurrent } from "@/features/auth/queries";
-import { SignInCard } from "@/features/auth/components/sign-in-card";
 import { redirect } from "next/navigation";
-import React from "react";
+import { SignInCard } from "@/features/auth/components/sign-in-card";
 
 const SignInPage = async () => {
   const user = await getCurrent();
