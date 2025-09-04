@@ -8,13 +8,12 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { HomeIcon, Loader, LogOut } from "lucide-react";
+import { Loader, LogOut } from "lucide-react";
 import { useTransitionRouter } from "next-view-transitions";
 import { useCurrentUser } from "../api/use-current-user";
 import { useLogout } from "../api/use-logout";
 
 export const UserButton = () => {
-  const router = useTransitionRouter();
   const { data: user, isLoading } = useCurrentUser();
   const { mutate: logout } = useLogout();
   if (isLoading) {
@@ -62,15 +61,8 @@ export const UserButton = () => {
         </div>
         <DottedSeperator className="mb-1" />
         <DropdownMenuItem
-          onClick={() => router.push("/")}
-          className="h-10 flex items-center font-medium text-indigo-700 cursor-pointer"
-        >
-          <HomeIcon className="size-5 mr-2" />
-          Back to Home
-        </DropdownMenuItem>
-        <DropdownMenuItem
           onClick={() => logout()}
-          className="h-10 flex items-center font-medium text-indigo-700 cursor-pointer"
+          className="h-10 flex items-center justify-center font-medium text-indigo-700 cursor-pointer"
         >
           <LogOut className="size-5 mr-2" />
           Sign Out

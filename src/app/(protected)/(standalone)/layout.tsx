@@ -1,7 +1,7 @@
-import Image from "next/image";
-import { Link } from "next-view-transitions";
+import Image from 'next/image';
+import { Link } from 'next-view-transitions';
 
-import { UserButton } from "@/features/auth/components/user-button";
+import { UserButton } from '@/features/auth/components/user-button';
 
 interface StandaloneLayoutProps {
   children: React.ReactNode;
@@ -9,15 +9,15 @@ interface StandaloneLayoutProps {
 
 const StandaloneLayout = ({ children }: StandaloneLayoutProps) => {
   return (
-    <main className="bg-neutral-100 min-h-screen">
-      <div className="inset-0 fixed min-h-full z-0 w-full bg-white bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:16px_16px]"></div>
+    <main className="min-h-screen bg-neutral-100">
+      <div className="fixed inset-0 z-0 min-h-full w-full bg-white bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:16px_16px]"></div>
       <div className="mx-auto max-w-screen-2xl p-4">
-        <nav className="flex relative justify-between items-center h-20">
-          <Link href={"/"}>
-            <div className="flex items-center gap-x-3 w-fit">
-              <Image src={"/logo.jpg"} alt="TaskFlow" width={45} height={50} />
+        <nav className="relative flex h-20 items-center justify-between">
+          <Link href={'/'}>
+            <div className="flex w-fit items-center gap-x-3">
+              <Image src={'/logo.jpg'} alt="TaskFlow" width={45} height={50} />
               <Image
-                src={"/logo-text.png"}
+                src={'/logo-text.png'}
                 alt="TaskFlow"
                 width={80}
                 height={50}

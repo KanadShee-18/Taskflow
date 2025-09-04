@@ -1,9 +1,12 @@
 # TaskFlow
 
-[Visit my site](https://taskflow-agile-pm.vercel.app)
+🌐[Visit Taskflow](https://taskflow-agile-pm.vercel.app)
+
+---
+
 TaskFlow is an **Agile Project Management Tool** designed to help teams efficiently manage their projects and tasks. It provides an intuitive interface for **workspace management, project tracking, task handling, and analytics** with multiple views like **Kanban, Calendar, and Data Tables**.
 
-![TaskFlow Banner](public/Images/project-kanban.png)
+![TaskFlow Banner](public/Images/taskflow.png)
 
 ## ✨ Features
 

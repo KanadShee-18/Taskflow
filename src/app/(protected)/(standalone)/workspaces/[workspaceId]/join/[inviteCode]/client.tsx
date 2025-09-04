@@ -1,10 +1,10 @@
-"use client";
+'use client';
 
-import ErrorPage from "@/app/error";
-import PageLoader from "@/components/page-loader";
-import { useGetWorkspaceInfo } from "@/features/workspaces/api/use-get-workspace-info";
-import { JoinWorkspaceForm } from "@/features/workspaces/components/join-workspace-form";
-import { useWorkspaceId } from "@/features/workspaces/hooks/workspaceId-hook";
+import ErrorPage from '@/app/error';
+import PageLoader from '@/components/page-loader';
+import { useGetWorkspaceInfo } from '@/features/workspaces/api/use-get-workspace-info';
+import { JoinWorkspaceForm } from '@/features/workspaces/components/join-workspace-form';
+import { useWorkspaceId } from '@/features/workspaces/hooks/workspaceId-hook';
 
 export const InviteCodeClientPage = () => {
   const workspaceId = useWorkspaceId();

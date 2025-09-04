@@ -1,10 +1,10 @@
-"use client";
+'use client';
 
-import ErrorPage from "@/app/error";
-import PageLoader from "@/components/page-loader";
-import { useGetWorkspace } from "@/features/workspaces/api/use-get-workspace";
-import { EditWorkSpaceForm } from "@/features/workspaces/components/edit-workspace-form";
-import { useWorkspaceId } from "@/features/workspaces/hooks/workspaceId-hook";
+import ErrorPage from '@/app/error';
+import PageLoader from '@/components/page-loader';
+import { useGetWorkspace } from '@/features/workspaces/api/use-get-workspace';
+import { EditWorkSpaceForm } from '@/features/workspaces/components/edit-workspace-form';
+import { useWorkspaceId } from '@/features/workspaces/hooks/workspaceId-hook';
 
 export const WorkspaceSettingsClient = () => {
   const workspaceId = useWorkspaceId();
@@ -16,7 +16,7 @@ export const WorkspaceSettingsClient = () => {
     return <ErrorPage message="Workspace Data not found!" />;
   }
   return (
-    <div className="relative h-full w-full md:max-w-lg flex items-center justify-center mx-auto">
+    <div className="relative mx-auto flex h-full w-full items-center justify-center md:max-w-lg">
       <EditWorkSpaceForm initialValues={data} />
     </div>
   );

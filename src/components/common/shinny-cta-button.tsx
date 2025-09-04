@@ -1,7 +1,7 @@
-import { cn } from "@/lib/utils";
-import { ArrowRight } from "lucide-react";
-import { Link } from "next-view-transitions";
-import { AnchorHTMLAttributes } from "react";
+import { cn } from '@/lib/utils';
+import { ArrowRight } from 'lucide-react';
+import { Link } from 'next-view-transitions';
+import { AnchorHTMLAttributes } from 'react';
 
 interface ShinnyButtonProps extends AnchorHTMLAttributes<HTMLAnchorElement> {}
 
@@ -13,9 +13,9 @@ export const ShinnyButton = ({
 }: ShinnyButtonProps) => {
   return (
     <Link
-      href={href ?? "#"}
+      href={href ?? '#'}
       className={cn(
-        "group relative flex transform items-center justify-center gap-2 overflow-hidden whitespace-nowrap rounded-md bg-primary px-8 font-medium text-white transition-all duration-300 hover:ring-2 hover:ring-indigo-400 hover:ring-offset-white hover:ring-offset-2 focus:outline-none focus:ring-2 focus:ring-[#56ac99] focus:ring-offset-2",
+        'group relative flex transform items-center justify-center gap-2 overflow-hidden whitespace-nowrap rounded-md bg-primary px-8 font-medium text-white transition-all duration-300 hover:ring-2 hover:ring-indigo-400 hover:ring-offset-2 hover:ring-offset-white focus:outline-none focus:ring-2 focus:ring-[#56ac99] focus:ring-offset-2',
         className
       )}
       {...props}

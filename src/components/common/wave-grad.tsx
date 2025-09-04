@@ -2,7 +2,7 @@ const WaveGradient = () => {
   return (
     <div className="relative h-48 w-full overflow-hidden bg-gradient-to-r from-indigo-200 to-teal-300">
       <svg
-        className="absolute top-0 left-0 w-full"
+        className="absolute left-0 top-0 w-full"
         viewBox="0 0 1440 120"
         preserveAspectRatio="none"
       >

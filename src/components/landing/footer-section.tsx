@@ -1,17 +1,17 @@
-import { MainLogo } from "@/components/common/app-logo";
-import { Link } from "next-view-transitions";
+import { MainLogo } from '@/components/common/app-logo';
+import { Link } from 'next-view-transitions';
 
 export function Footer() {
   return (
     <footer
       id="footer"
-      className="bg-gray-50  mx-auto py-12 md:py-16 border-t border-gray-200 relative"
+      className="relative mx-auto border-t border-gray-200 bg-gray-50 py-12 md:py-16"
     >
-      <div className="container max-w-[1408px] mx-auto px-10 md:px-6">
-        <div className="grid grid-cols-1 md:grid-cols-5 gap-8 mb-8">
+      <div className="container mx-auto max-w-[1408px] px-10 md:px-6">
+        <div className="mb-8 grid grid-cols-1 gap-8 md:grid-cols-5">
           <div className="md:col-span-2">
             <MainLogo />
-            <p className="text-gray-600 my-4 max-w-md font-sans-source font-medium">
+            <p className="font-sans-source my-4 max-w-md font-medium text-gray-600">
               Streamline your workflow with Taskflow, the agile project
               management solution designed for modern teams.
             </p>
@@ -20,7 +20,7 @@ export function Footer() {
                 href="https://x.com/Kanad_Shee"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gray-400 hover:text-indigo-600 transition"
+                className="text-gray-400 transition hover:text-indigo-600"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -40,7 +40,7 @@ export function Footer() {
                 href="https://github.com/KanadShee-18"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gray-400 hover:text-indigo-600 transition"
+                className="text-gray-400 transition hover:text-indigo-600"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -83,8 +83,8 @@ export function Footer() {
               <a
                 href="https://www.instagram.com/kanadshee/"
                 target="_blank"
-                rel={"noopener noreferrer"}
-                className="text-gray-400 hover:text-indigo-600 transition"
+                rel={'noopener noreferrer'}
+                className="text-gray-400 transition hover:text-indigo-600"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -105,7 +105,7 @@ export function Footer() {
               <a
                 href="https://www.linkedin.com/in/kanadshee/"
                 target="_blank"
-                className="text-gray-400 hover:text-indigo-600 transition"
+                className="text-gray-400 transition hover:text-indigo-600"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -126,12 +126,12 @@ export function Footer() {
             </div>
           </div>
           <div>
-            <h3 className="font-semibold mb-4 text-gray-600">Product</h3>
+            <h3 className="mb-4 font-semibold text-gray-600">Product</h3>
             <ul className="space-y-3 text-sm">
               <li>
                 <Link
                   href="#footer"
-                  className="text-gray-600 hover:text-indigo-600 transition"
+                  className="text-gray-600 transition hover:text-indigo-600"
                 >
                   Features
                 </Link>
@@ -139,7 +139,7 @@ export function Footer() {
               <li>
                 <Link
                   href="#footer"
-                  className="text-gray-600 hover:text-indigo-600 transition"
+                  className="text-gray-600 transition hover:text-indigo-600"
                 >
                   Pricing
                 </Link>
@@ -147,7 +147,7 @@ export function Footer() {
               <li>
                 <Link
                   href="#footer"
-                  className="text-gray-600 hover:text-indigo-600 transition"
+                  className="text-gray-600 transition hover:text-indigo-600"
                 >
                   Integrations
                 </Link>
@@ -155,7 +155,7 @@ export function Footer() {
               <li>
                 <Link
                   href="#footer"
-                  className="text-gray-600 hover:text-indigo-600 transition"
+                  className="text-gray-600 transition hover:text-indigo-600"
                 >
                   Changelog
                 </Link>
@@ -163,7 +163,7 @@ export function Footer() {
               <li>
                 <Link
                   href="#footer"
-                  className="text-gray-600 hover:text-indigo-600 transition"
+                  className="text-gray-600 transition hover:text-indigo-600"
                 >
                   Roadmap
                 </Link>
@@ -171,12 +171,12 @@ export function Footer() {
             </ul>
           </div>
           <div>
-            <h3 className="font-semibold mb-4 text-gray-600">Resources</h3>
+            <h3 className="mb-4 font-semibold text-gray-600">Resources</h3>
             <ul className="space-y-3 text-sm">
               <li>
                 <Link
                   href="#footer"
-                  className="text-gray-600 hover:text-indigo-600 transition"
+                  className="text-gray-600 transition hover:text-indigo-600"
                 >
                   Documentation
                 </Link>
@@ -184,7 +184,7 @@ export function Footer() {
               <li>
                 <Link
                   href="#footer"
-                  className="text-gray-600 hover:text-indigo-600 transition"
+                  className="text-gray-600 transition hover:text-indigo-600"
                 >
                   Tutorials
                 </Link>
@@ -192,7 +192,7 @@ export function Footer() {
               <li>
                 <Link
                   href="#footer"
-                  className="text-gray-600 hover:text-indigo-600 transition"
+                  className="text-gray-600 transition hover:text-indigo-600"
                 >
                   Blog
                 </Link>
@@ -200,7 +200,7 @@ export function Footer() {
               <li>
                 <Link
                   href="#footer"
-                  className="text-gray-600 hover:text-indigo-600 transition"
+                  className="text-gray-600 transition hover:text-indigo-600"
                 >
                   Support Center
                 </Link>
@@ -208,7 +208,7 @@ export function Footer() {
               <li>
                 <Link
                   href="#footer"
-                  className="text-gray-600 hover:text-indigo-600 transition"
+                  className="text-gray-600 transition hover:text-indigo-600"
                 >
                   API Reference
                 </Link>
@@ -216,12 +216,12 @@ export function Footer() {
             </ul>
           </div>
           <div>
-            <h3 className="font-semibold mb-4 text-gray-600">Company</h3>
+            <h3 className="mb-4 font-semibold text-gray-600">Company</h3>
             <ul className="space-y-3 text-sm">
               <li>
                 <Link
                   href="#footer"
-                  className="text-gray-600 hover:text-indigo-600 transition"
+                  className="text-gray-600 transition hover:text-indigo-600"
                 >
                   About
                 </Link>
@@ -229,7 +229,7 @@ export function Footer() {
               <li>
                 <Link
                   href="#footer"
-                  className="text-gray-600 hover:text-indigo-600 transition"
+                  className="text-gray-600 transition hover:text-indigo-600"
                 >
                   Team
                 </Link>
@@ -237,7 +237,7 @@ export function Footer() {
               <li>
                 <Link
                   href="#footer"
-                  className="text-gray-600 hover:text-indigo-600 transition"
+                  className="text-gray-600 transition hover:text-indigo-600"
                 >
                   Careers
                 </Link>
@@ -245,7 +245,7 @@ export function Footer() {
               <li>
                 <Link
                   href="#footer"
-                  className="text-gray-600 hover:text-indigo-600 transition"
+                  className="text-gray-600 transition hover:text-indigo-600"
                 >
                   Contact
                 </Link>
@@ -253,7 +253,7 @@ export function Footer() {
               <li>
                 <Link
                   href="#footer"
-                  className="text-gray-600 hover:text-indigo-600 transition"
+                  className="text-gray-600 transition hover:text-indigo-600"
                 >
                   Partners
                 </Link>
@@ -261,32 +261,32 @@ export function Footer() {
             </ul>
           </div>
         </div>
-        <div className="border-t border-gray-200 pt-8 flex flex-col md:flex-row justify-between items-center">
-          <p className="text-gray-500 text-sm mb-4 md:mb-0">
+        <div className="flex flex-col items-center justify-between border-t border-gray-200 pt-8 md:flex-row">
+          <p className="mb-4 text-sm text-gray-500 md:mb-0">
             © 2025 Taskflow. All rights reserved.
           </p>
           <div className="flex flex-wrap space-x-6">
             <Link
               href="#footer"
-              className="text-gray-500 hover:text-indigo-600 transition text-sm"
+              className="text-sm text-gray-500 transition hover:text-indigo-600"
             >
               Terms
             </Link>
             <Link
               href="#footer"
-              className="text-gray-500 hover:text-indigo-600 transition text-sm"
+              className="text-sm text-gray-500 transition hover:text-indigo-600"
             >
               Privacy
             </Link>
             <Link
               href="#footer"
-              className="text-gray-500 hover:text-indigo-600 transition text-sm"
+              className="text-sm text-gray-500 transition hover:text-indigo-600"
             >
               Security
             </Link>
             <Link
               href="#footer"
-              className="text-gray-500 hover:text-indigo-600 transition text-sm"
+              className="text-sm text-gray-500 transition hover:text-indigo-600"
             >
               Cookies
             </Link>

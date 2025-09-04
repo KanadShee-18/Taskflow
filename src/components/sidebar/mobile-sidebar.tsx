@@ -1,11 +1,11 @@
-"use client";
+'use client';
 
-import { MenuIcon } from "lucide-react";
-import { Button } from "../ui/button";
-import { Sheet, SheetContent, SheetTrigger } from "../ui/sheet";
-import Sidebar from "./sidebar-section";
-import { useEffect, useState } from "react";
-import { usePathname } from "next/navigation";
+import { MenuIcon } from 'lucide-react';
+import { Button } from '../ui/button';
+import { Sheet, SheetContent, SheetTrigger } from '../ui/sheet';
+import Sidebar from './sidebar-section';
+import { useEffect, useState } from 'react';
+import { usePathname } from 'next/navigation';
 
 export const MobileSidebar = () => {
   const [isSheetOpen, setIsSheetOpen] = useState<boolean>(false);
@@ -16,11 +16,11 @@ export const MobileSidebar = () => {
   return (
     <Sheet modal={false} open={isSheetOpen} onOpenChange={setIsSheetOpen}>
       <SheetTrigger asChild>
-        <Button size={"icon"} variant={"secondary"} className="lg:hidden">
+        <Button size={'icon'} variant={'secondary'} className="lg:hidden">
           <MenuIcon className="size-4 text-indigo-500" />
         </Button>
       </SheetTrigger>
-      <SheetContent side={"left"} className="p-0 w-64">
+      <SheetContent side={'left'} className="w-64 p-0">
         <Sidebar />
       </SheetContent>
     </Sheet>

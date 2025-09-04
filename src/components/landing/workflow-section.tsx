@@ -1,34 +1,34 @@
-"use client";
+'use client';
 
-import { Check, PackageCheck } from "lucide-react";
-import { motion, Variants } from "motion/react";
-import { DottedSeperator } from "@/components/dotted-seperator";
+import { Check, PackageCheck } from 'lucide-react';
+import { motion, Variants } from 'motion/react';
+import { DottedSeperator } from '@/components/dotted-seperator';
 
 const steps = [
   {
-    title: "Create Workspace",
+    title: 'Create Workspace',
     description:
-      "Set up a dedicated space for your team and organize all your projects in one place.",
+      'Set up a dedicated space for your team and organize all your projects in one place.',
   },
   {
-    title: "Create Project",
+    title: 'Create Project',
     description:
-      "Define project parameters, set goals, and establish your team structure.",
+      'Define project parameters, set goals, and establish your team structure.',
   },
   {
-    title: "Build Ideas",
+    title: 'Build Ideas',
     description:
-      "Brainstorm with your team, collect feedback, and capture all your ideas in one place.",
+      'Brainstorm with your team, collect feedback, and capture all your ideas in one place.',
   },
   {
-    title: "Make Plan",
+    title: 'Make Plan',
     description:
-      "Break down projects into manageable tasks and set clear timelines.",
+      'Break down projects into manageable tasks and set clear timelines.',
   },
   {
-    title: "Invite Collaborators",
+    title: 'Invite Collaborators',
     description:
-      "Bring in team members, assign roles, and start collaborating in real time.",
+      'Bring in team members, assign roles, and start collaborating in real time.',
   },
 ];
 
@@ -44,25 +44,25 @@ const containerVariants: Variants = {
 
 export function WorkflowSection() {
   return (
-    <section id="how-it-works" className="py-16 md:py-24 relative">
+    <section id="how-it-works" className="relative py-16 md:py-24">
       <div className="container mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16 relative"
+          className="relative mb-16 text-center"
         >
-          <div className="absolute w-1/2 h-[400px] bg-teal-400 rounded-full blur-[140px] opacity-40 right-0 -top-40" />
-          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-gray-800 mb-4 font-serif relative">
-            How{" "}
-            <span className="bg-gradient-to-tl from-indigo-500 to-teal-500 text-transparent bg-clip-text">
-              {" "}
+          <div className="absolute -top-40 right-0 h-[400px] w-1/2 rounded-full bg-teal-400 opacity-40 blur-[140px]" />
+          <h2 className="font-serif relative mb-4 text-3xl font-bold leading-tight text-gray-800 sm:text-4xl md:text-5xl lg:text-6xl">
+            How{' '}
+            <span className="bg-gradient-to-tl from-indigo-500 to-teal-500 bg-clip-text text-transparent">
+              {' '}
               TaskFlow
-            </span>{" "}
+            </span>{' '}
             Works
           </h2>
-          <p className="text-sm sm:text-base md:text-lg font-sans-source text-gray-500 mb-8 max-w-lg font-semibold mx-auto">
+          <p className="font-sans-source mx-auto mb-8 max-w-lg text-sm font-semibold text-gray-500 sm:text-base md:text-lg">
             Get started with Taskflow in just a few simple steps and transform
             how your team manages projects.
           </p>
@@ -73,20 +73,20 @@ export function WorkflowSection() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="max-w-4xl mx-auto"
+          className="mx-auto max-w-4xl"
         >
           {steps.map((step, index) => (
             <motion.div
               key={index}
               initial={{
                 opacity: 0,
-                filter: "blur(10px)",
+                filter: 'blur(10px)',
                 y: 30,
                 scale: 0.98,
               }}
               whileInView={{
                 opacity: 1,
-                filter: "blur(0px)",
+                filter: 'blur(0px)',
                 y: 0,
                 scale: 1,
               }}
@@ -94,58 +94,58 @@ export function WorkflowSection() {
               transition={{
                 duration: 0.6,
                 delay: index * 0.1,
-                ease: "easeOut",
+                ease: 'easeOut',
               }}
-              className="relative grid md:place-items-center place-items-start"
+              className="relative grid place-items-start md:place-items-center"
             >
               <div className="flex">
-                <div className="flex flex-col items-center mr-6">
+                <div className="mr-6 flex flex-col items-center">
                   <motion.div
                     whileHover={{ scale: 1.1 }}
-                    className={`w-10 h-10 aspect-square rounded-full flex items-center justify-center z-10 ${
+                    className={`z-10 flex aspect-square h-10 w-10 items-center justify-center rounded-full ${
                       index === steps.length - 1
-                        ? "bg-teal-100 text-indigo-600 shadow-xs shadow-slate-900"
-                        : "bg-indigo-100 text-teal-500 shadow-xs shadow-slate-900"
+                        ? 'shadow-xs bg-teal-100 text-indigo-600 shadow-slate-900'
+                        : 'shadow-xs bg-indigo-100 text-teal-500 shadow-slate-900'
                     }`}
                   >
                     {index === steps.length - 1 ? (
-                      <Check className="w-5 h-5" />
+                      <Check className="h-5 w-5" />
                     ) : (
-                      <PackageCheck className="w-5 h-5" />
+                      <PackageCheck className="h-5 w-5" />
                     )}
                   </motion.div>
                   {index < steps.length - 1 && (
-                    <div className="w-0.5 h-full py-3">
+                    <div className="h-full w-0.5 py-3">
                       <DottedSeperator direction="vertical" />
                     </div>
                   )}
                 </div>
                 <div className="pb-12">
-                  <h3 className="text-xl font-semibold mb-2 text-indigo-500 font-sans-mona">
+                  <h3 className="font-sans-mona mb-2 text-xl font-semibold text-indigo-500">
                     {step.title}
                   </h3>
-                  <p className="text-gray-500 mb-6 font-delius font-semibold">
+                  <p className="mb-6 font-delius font-semibold text-gray-500">
                     {step.description}
                   </p>
                   <motion.div
                     whileHover={{ scale: 1.02 }}
-                    className="bg-gray-100 p-4 rounded-lg"
+                    className="rounded-lg bg-gray-100 p-4"
                   >
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                      <div className="bg-white p-4 md:w-[200px] rounded shadow-sm">
+                    <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+                      <div className="rounded bg-white p-4 shadow-sm md:w-[200px]">
                         {index === 0 && (
                           <div className="space-y-2">
-                            <div className="w-1/2 h-5 bg-indigo-100 rounded"></div>
-                            <div className="w-2/3 h-3 bg-gray-100 rounded"></div>
-                            <div className="w-3/4 h-3 bg-gray-100 rounded"></div>
+                            <div className="h-5 w-1/2 rounded bg-indigo-100"></div>
+                            <div className="h-3 w-2/3 rounded bg-gray-100"></div>
+                            <div className="h-3 w-3/4 rounded bg-gray-100"></div>
                           </div>
                         )}
                         {index === 1 && (
                           <div className="space-y-2">
-                            <div className="w-1/2 h-5 bg-teal-100 rounded"></div>
-                            <div className="grid grid-cols-2 gap-2 mt-3">
-                              <div className="h-8 bg-gray-100 rounded"></div>
-                              <div className="h-8 bg-gray-100 rounded"></div>
+                            <div className="h-5 w-1/2 rounded bg-teal-100"></div>
+                            <div className="mt-3 grid grid-cols-2 gap-2">
+                              <div className="h-8 rounded bg-gray-100"></div>
+                              <div className="h-8 rounded bg-gray-100"></div>
                             </div>
                           </div>
                         )}
@@ -156,27 +156,27 @@ export function WorkflowSection() {
                                 key={i}
                                 className="flex items-center space-x-2"
                               >
-                                <div className="w-3 h-3 rounded-full bg-indigo-200"></div>
-                                <div className="w-full h-3 bg-gray-100 rounded"></div>
+                                <div className="h-3 w-3 rounded-full bg-indigo-200"></div>
+                                <div className="h-3 w-full rounded bg-gray-100"></div>
                               </div>
                             ))}
                           </div>
                         )}
                         {index === 3 && (
                           <div>
-                            <div className="mb-3 h-4 w-1/3 bg-gray-200 rounded"></div>
+                            <div className="mb-3 h-4 w-1/3 rounded bg-gray-200"></div>
                             <div className="flex space-x-2">
-                              <div className="w-1/3 h-14 bg-indigo-100 rounded p-1">
-                                <div className="w-full h-2 bg-gray-200 rounded mb-1"></div>
-                                <div className="w-2/3 h-2 bg-gray-200 rounded"></div>
+                              <div className="h-14 w-1/3 rounded bg-indigo-100 p-1">
+                                <div className="mb-1 h-2 w-full rounded bg-gray-200"></div>
+                                <div className="h-2 w-2/3 rounded bg-gray-200"></div>
                               </div>
-                              <div className="w-1/3 h-14 bg-teal-100 rounded p-1">
-                                <div className="w-full h-2 bg-gray-200 rounded mb-1"></div>
-                                <div className="w-2/3 h-2 bg-gray-200 rounded"></div>
+                              <div className="h-14 w-1/3 rounded bg-teal-100 p-1">
+                                <div className="mb-1 h-2 w-full rounded bg-gray-200"></div>
+                                <div className="h-2 w-2/3 rounded bg-gray-200"></div>
                               </div>
-                              <div className="w-1/3 h-14 bg-gray-100 rounded p-1">
-                                <div className="w-full h-2 bg-gray-200 rounded mb-1"></div>
-                                <div className="w-2/3 h-2 bg-gray-200 rounded"></div>
+                              <div className="h-14 w-1/3 rounded bg-gray-100 p-1">
+                                <div className="mb-1 h-2 w-full rounded bg-gray-200"></div>
+                                <div className="h-2 w-2/3 rounded bg-gray-200"></div>
                               </div>
                             </div>
                           </div>
@@ -184,31 +184,31 @@ export function WorkflowSection() {
                         {index === 4 && (
                           <div className="space-y-3">
                             <div className="flex items-center space-x-2">
-                              <div className="w-8 h-8 rounded-full bg-indigo-100"></div>
+                              <div className="h-8 w-8 rounded-full bg-indigo-100"></div>
                               <div className="flex-1">
-                                <div className="w-1/3 h-3 bg-gray-100 rounded mb-1"></div>
-                                <div className="w-1/2 h-2 bg-gray-100 rounded"></div>
+                                <div className="mb-1 h-3 w-1/3 rounded bg-gray-100"></div>
+                                <div className="h-2 w-1/2 rounded bg-gray-100"></div>
                               </div>
-                              <div className="w-16 h-6 bg-teal-100 rounded"></div>
+                              <div className="h-6 w-16 rounded bg-teal-100"></div>
                             </div>
                             <div className="flex items-center space-x-2">
-                              <div className="w-8 h-8 rounded-full bg-teal-100"></div>
+                              <div className="h-8 w-8 rounded-full bg-teal-100"></div>
                               <div className="flex-1">
-                                <div className="w-1/3 h-3 bg-gray-100 rounded mb-1"></div>
-                                <div className="w-1/2 h-2 bg-gray-100 rounded"></div>
+                                <div className="mb-1 h-3 w-1/3 rounded bg-gray-100"></div>
+                                <div className="h-2 w-1/2 rounded bg-gray-100"></div>
                               </div>
-                              <div className="w-16 h-6 bg-indigo-100 rounded"></div>
+                              <div className="h-6 w-16 rounded bg-indigo-100"></div>
                             </div>
                           </div>
                         )}
                       </div>
                       <div className="hidden md:block">
-                        <div className="h-full w-full bg-gradient-to-br from-indigo-50 to-teal-50 rounded flex items-center justify-center md:w-[300px]">
+                        <div className="flex h-full w-full items-center justify-center rounded bg-gradient-to-br from-indigo-50 to-teal-50 md:w-[300px]">
                           <div
-                            className={`w-16 h-16 ${
+                            className={`h-16 w-16 ${
                               index % 2 === 0
-                                ? "text-indigo-500"
-                                : "text-teal-500"
+                                ? 'text-indigo-500'
+                                : 'text-teal-500'
                             }`}
                           >
                             {index === 0 && (
