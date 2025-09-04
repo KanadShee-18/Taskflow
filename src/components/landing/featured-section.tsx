@@ -7,7 +7,6 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { cn } from "@/lib/utils";
 import { Calendar, Kanban, Menu as MenuIcon } from "lucide-react";
 import { motion, Variants } from "motion/react";
 
