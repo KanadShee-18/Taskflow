@@ -1,13 +1,13 @@
 "use client";
 
-import { Project } from "@/features/projects/types";
-import { TaskStatus } from "../types";
-import { cn } from "@/lib/utils";
 import { MemberAvatar } from "@/features/member/components/member-avatar";
-import { ProjectAvatar } from "@/features/projects/components/project-avatar";
-import { useWorkspaceId } from "@/features/workspaces/hooks/workspaceId-hook";
-import { useRouter } from "next/navigation";
 import { Member } from "@/features/member/types";
+import { ProjectAvatar } from "@/features/projects/components/project-avatar";
+import { Project } from "@/features/projects/types";
+import { useWorkspaceId } from "@/features/workspaces/hooks/workspaceId-hook";
+import { cn } from "@/lib/utils";
+import { useTransitionRouter } from "next-view-transitions";
+import { TaskStatus } from "../types";
 
 interface EventCardProps {
   id: string;
@@ -33,12 +33,12 @@ export const EventCard = ({
   title,
 }: EventCardProps) => {
   const workspaceid = useWorkspaceId();
-  const router = useRouter();
+  const router = useTransitionRouter();
 
   const onTaskClick = (e: React.MouseEvent<HTMLDivElement>) => {
     e.stopPropagation();
 
-    router.push(`/workspaces/${workspaceid}/tasks/${id}`);
+    router.push(`/dashboard/workspaces/${workspaceid}/tasks/${id}`);
   };
 
   return (

@@ -1,6 +1,6 @@
 "use client";
 
-import Link from "next/link";
+import { Link } from "next-view-transitions";
 import { Fragment } from "react";
 import { Button } from "@/components/ui/button";
 
@@ -15,7 +15,7 @@ import {
 import { ArrowLeftIcon, MoreVerticalIcon, NotebookPen } from "lucide-react";
 
 import { Separator } from "@/components/ui/separator";
-import { DotterSeperator } from "@/components/dotted-seperator";
+import { DottedSeperator } from "@/components/dotted-seperator";
 
 import { useConfirm } from "@/hooks/user-confirmation-modal";
 import { useWorkspaceId } from "../hooks/workspaceId-hook";
@@ -77,14 +77,14 @@ export const MembersList = () => {
             Members List
           </CardTitle>
           <Button asChild size={"sm"} variant={"secondary"}>
-            <Link href={"/"}>
+            <Link href={"/dashboard"}>
               <ArrowLeftIcon className="size-4 mr-2" />
               Back
             </Link>
           </Button>
         </CardHeader>
         <div className="px-7">
-          <DotterSeperator />
+          <DottedSeperator />
         </div>
         {isMemberFetchingLoading ? (
           <div className="p-7 space-y-3">

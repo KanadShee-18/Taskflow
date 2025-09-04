@@ -1,6 +1,6 @@
 "use client";
 
-import { DotterSeperator } from "@/components/dotted-seperator";
+import { DottedSeperator } from "@/components/dotted-seperator";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import {
@@ -19,7 +19,7 @@ import { IoMdEye, IoMdEyeOff } from "react-icons/io";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import Link from "next/link";
+import { Link } from "next-view-transitions";
 import { SignInSchema } from "@/features/auth/schemas";
 import { useLogin } from "@/features/auth/api/use-login";
 import { ChevronRight, Loader } from "lucide-react";
@@ -50,7 +50,7 @@ export const SignInCard = () => {
         </CardTitle>
       </CardHeader>
       <div className="px-7">
-        <DotterSeperator />
+        <DottedSeperator />
       </div>
       <CardContent className="p-7">
         <Form {...form}>
@@ -129,7 +129,7 @@ export const SignInCard = () => {
         </Link>
       </div>
       <div className="px-7">
-        <DotterSeperator />
+        <DottedSeperator />
       </div>
       <CardContent className="p-7 flex flex-col gap-y-4">
         <Button

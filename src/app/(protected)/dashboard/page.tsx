@@ -14,6 +14,6 @@ export default async function Home() {
   if (workspaces.total === 0) {
     redirect(`/workspaces/create`);
   } else {
-    redirect(`/workspaces/${workspaces.documents[0].$id}`);
+    redirect(`/dashboard/workspaces/${workspaces.documents[0].$id}`);
   }
 }

@@ -4,11 +4,11 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { ExternalLinkIcon, PencilIcon, TrashIcon } from "lucide-react";
-import { useDeleteTask } from "../api/use-delete-task";
-import { useConfirm } from "@/hooks/user-confirmation-modal";
-import { useRouter } from "next/navigation";
 import { useWorkspaceId } from "@/features/workspaces/hooks/workspaceId-hook";
+import { useConfirm } from "@/hooks/user-confirmation-modal";
+import { ExternalLinkIcon, PencilIcon, TrashIcon } from "lucide-react";
+import { useTransitionRouter } from "next-view-transitions";
+import { useDeleteTask } from "../api/use-delete-task";
 import { UseEditTaskModal } from "../hooks/use-edit-task-modal";
 
 interface TaskActionsProps {
@@ -18,7 +18,7 @@ interface TaskActionsProps {
 }
 
 export const TaskActions = ({ children, id, projectId }: TaskActionsProps) => {
-  const router = useRouter();
+  const router = useTransitionRouter();
   const workspaceId = useWorkspaceId();
 
   const { open } = UseEditTaskModal();
@@ -33,11 +33,11 @@ export const TaskActions = ({ children, id, projectId }: TaskActionsProps) => {
   );
 
   const onOpenProject = () => {
-    router.push(`/workspaces/${workspaceId}/projects/${projectId}`);
+    router.push(`/dashboard/workspaces/${workspaceId}/projects/${projectId}`);
   };
 
   const onOpenTask = () => {
-    router.push(`/workspaces/${workspaceId}/tasks/${id}`);
+    router.push(`/dashboard/workspaces/${workspaceId}/tasks/${id}`);
   };
 
   const onTaskDelete = async () => {

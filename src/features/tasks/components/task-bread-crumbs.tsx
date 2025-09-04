@@ -1,15 +1,14 @@
 "use client";
 
-import { Project } from "@/features/projects/types";
-import { Task } from "../types";
-import { ProjectAvatar } from "@/features/projects/components/project-avatar";
-import Link from "next/link";
-import { useWorkspaceId } from "@/features/workspaces/hooks/workspaceId-hook";
-import { ChevronRightIcon, TrashIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { useDeleteTask } from "../api/use-delete-task";
+import { ProjectAvatar } from "@/features/projects/components/project-avatar";
+import { Project } from "@/features/projects/types";
+import { useWorkspaceId } from "@/features/workspaces/hooks/workspaceId-hook";
 import { useConfirm } from "@/hooks/user-confirmation-modal";
-import { useRouter } from "next/navigation";
+import { ChevronRightIcon, TrashIcon } from "lucide-react";
+import { Link, useTransitionRouter } from "next-view-transitions";
+import { useDeleteTask } from "../api/use-delete-task";
+import { Task } from "../types";
 
 interface TaskBreadCrumbsProps {
   project: Project;
@@ -17,7 +16,7 @@ interface TaskBreadCrumbsProps {
 }
 
 export const TaskBreadCrumbs = ({ project, task }: TaskBreadCrumbsProps) => {
-  const router = useRouter();
+  const router = useTransitionRouter();
   const workspaceId = useWorkspaceId();
 
   const { mutate: deleteTask, isPending } = useDeleteTask();
@@ -36,7 +35,7 @@ export const TaskBreadCrumbs = ({ project, task }: TaskBreadCrumbsProps) => {
       { param: { taskId: task.$id } },
       {
         onSuccess: () => {
-          router.push(`/workspaces/${workspaceId}/tasks`);
+          router.push(`/dashboard/workspaces/${workspaceId}/tasks`);
         },
       }
     );
@@ -50,7 +49,9 @@ export const TaskBreadCrumbs = ({ project, task }: TaskBreadCrumbsProps) => {
         image={project.imageUrl}
         className="size-6 lg:size-8"
       />
-      <Link href={`/workspaces/${workspaceId}/projects/${project.$id}`}>
+      <Link
+        href={`/dashboard/workspaces/${workspaceId}/projects/${project.$id}`}
+      >
         <p className="text-sm lg:text-lg font-semibold text-muted-foreground hover:opacity-75 transition">
           {project.name}
         </p>

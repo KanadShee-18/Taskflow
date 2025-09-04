@@ -1,21 +1,21 @@
 "use client";
 
-import { useRouter } from "next/navigation";
-import { z } from "zod";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
-import { updateProjectSchema } from "../schemas";
+import { DottedSeperator } from "@/components/dotted-seperator";
+import { Avatar, AvatarFallback } from "@/components/ui/avatar";
+import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import {
   Form,
   FormControl,
-  FormItem,
   FormField,
+  FormItem,
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
-import { DotterSeperator } from "@/components/dotted-seperator";
 import { Input } from "@/components/ui/input";
+import { useConfirm } from "@/hooks/user-confirmation-modal";
+import { cn } from "@/lib/utils";
+import { zodResolver } from "@hookform/resolvers/zod";
 import {
   ArrowLeftIcon,
   ImageIcon,
@@ -23,15 +23,15 @@ import {
   Trash2,
   UserRoundPen,
 } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { useRef } from "react";
+import { useTransitionRouter } from "next-view-transitions";
 import Image from "next/image";
-import { Avatar, AvatarFallback } from "@/components/ui/avatar";
-import { cn } from "@/lib/utils";
-import { Project } from "../types";
-import { useUpdateProject } from "../api/use-update-project";
-import { useConfirm } from "@/hooks/user-confirmation-modal";
+import { useRef } from "react";
+import { useForm } from "react-hook-form";
+import { z } from "zod";
 import { useDeleteProject } from "../api/use-delete-project";
+import { useUpdateProject } from "../api/use-update-project";
+import { updateProjectSchema } from "../schemas";
+import { Project } from "../types";
 
 interface EditProjectFormProps {
   onCancel?: () => void;
@@ -42,7 +42,7 @@ export const EditProjectForm = ({
   onCancel,
   initialValues,
 }: EditProjectFormProps) => {
-  const router = useRouter();
+  const router = useTransitionRouter();
   const { mutate, isPending } = useUpdateProject();
   const { mutate: deleteProject, isPending: isDeletionPending } =
     useDeleteProject();
@@ -74,7 +74,7 @@ export const EditProjectForm = ({
       },
       {
         onSuccess: () => {
-          router.push(`/workspaces/${initialValues.workspaceId}`);
+          router.push(`/dashboard/workspaces/${initialValues.workspaceId}`);
         },
       }
     );
@@ -113,7 +113,7 @@ export const EditProjectForm = ({
                 ? onCancel
                 : () =>
                     router.push(
-                      `/workspaces/${initialValues.workspaceId}/projects/${initialValues.$id}`
+                      `/dashboard/workspaces/${initialValues.workspaceId}/projects/${initialValues.$id}`
                     )
             }
             size={"sm"}
@@ -125,7 +125,7 @@ export const EditProjectForm = ({
           </Button>
         </CardHeader>
         <div className="px-7">
-          <DotterSeperator />
+          <DottedSeperator />
         </div>
         <CardContent className="p-7">
           <Form {...form}>
@@ -227,7 +227,7 @@ export const EditProjectForm = ({
                 />
               </div>
               <div className="mt-7">
-                <DotterSeperator />
+                <DottedSeperator />
               </div>
               <div className="flex items-center mt-10 w-full justify-between">
                 <Button
@@ -266,12 +266,12 @@ export const EditProjectForm = ({
               <div>
                 <h3 className="font-bold text-rose-600">Danger Zone</h3>
                 <p className="text-sm text-muted-foreground font-medium">
-                  You&apos;re going to delete this project which will remove all its
-                  associated data related to this project
+                  You&apos;re going to delete this project which will remove all
+                  its associated data related to this project
                 </p>
               </div>
             </div>
-            <DotterSeperator className="py-7" />
+            <DottedSeperator className="py-7" />
             <Button
               size={"sm"}
               className="ml-auto"

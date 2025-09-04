@@ -1,7 +1,7 @@
 "use client";
 
 import ErrorPage from "@/app/error";
-import { DotterSeperator } from "@/components/dotted-seperator";
+import { DottedSeperator } from "@/components/dotted-seperator";
 import { formatDistanceToNow } from "date-fns";
 import PageLoader from "@/components/page-loader";
 import { Button } from "@/components/ui/button";
@@ -16,7 +16,7 @@ import { Task } from "@/features/tasks/types";
 import { useGetWorkspaceAnalytics } from "@/features/workspaces/api/use-get-workspce-analytics";
 import { useWorkspaceId } from "@/features/workspaces/hooks/workspaceId-hook";
 import { CalendarIcon, PlusIcon, SettingsIcon } from "lucide-react";
-import Link from "next/link";
+import { Link } from "next-view-transitions";
 import { Project } from "@/features/projects/types";
 import { ProjectAvatar } from "@/features/projects/components/project-avatar";
 import { Member } from "@/features/member/types";
@@ -82,12 +82,14 @@ export const TaskList = ({ data, total }: TaskListProps) => {
             <PlusIcon className="size-4 text-neutral-400" />
           </Button>
         </div>
-        <DotterSeperator className="my-4" />
+        <DottedSeperator className="my-4" />
 
         <ul className="flex flex-col gap-y-4">
           {data.map((task) => (
             <li key={task.$id}>
-              <Link href={`/workspaces/${workspaceId}/tasks/${task.$id}`}>
+              <Link
+                href={`/dashboard/workspaces/${workspaceId}/tasks/${task.$id}`}
+              >
                 <Card className="rounded-lg hover:opacity-75 transition">
                   <CardContent className="p-4">
                     <p className="text-lg text-indigo-400 font-semibold truncate">
@@ -113,7 +115,9 @@ export const TaskList = ({ data, total }: TaskListProps) => {
           </li>
         </ul>
         <Button className="mt-4 w-full" variant={"muted"} asChild>
-          <Link href={`/workspaces/${workspaceId}/tasks`}>Show All</Link>
+          <Link href={`/dashboard/workspaces/${workspaceId}/tasks`}>
+            Show All
+          </Link>
         </Button>
       </div>
     </div>
@@ -144,12 +148,14 @@ export const ProjectList = ({ data, total }: ProjectListProps) => {
             <PlusIcon className="size-4 text-neutral-400" />
           </Button>
         </div>
-        <DotterSeperator className="my-4" />
+        <DottedSeperator className="my-4" />
 
         <ul className="grid grid-cols-1 lg:grid-cols-2 gap-4">
           {data.map((project) => (
             <li key={project.$id}>
-              <Link href={`/workspaces/${workspaceId}/projects/${project.$id}`}>
+              <Link
+                href={`/dashboard/workspaces/${workspaceId}/projects/${project.$id}`}
+              >
                 <Card className="rounded-lg hover:opacity-75 transition">
                   <CardContent className="p-4 flex items-center gap-x-2.5">
                     <ProjectAvatar
@@ -196,7 +202,7 @@ export const MemberList = ({ data, total }: MemberListProps) => {
             </Link>
           </Button>
         </div>
-        <DotterSeperator className="my-4" />
+        <DottedSeperator className="my-4" />
 
         <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {data.map((member) => (

@@ -13,7 +13,7 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
-import { DotterSeperator } from "@/components/dotted-seperator";
+import { DottedSeperator } from "@/components/dotted-seperator";
 import { Input } from "@/components/ui/input";
 import { FolderGit2, Loader } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -74,7 +74,7 @@ export const CreateTaskForm = ({
         </CardTitle>
       </CardHeader>
       <div className="px-7">
-        <DotterSeperator />
+        <DottedSeperator />
       </div>
       <CardContent className="p-7">
         <Form {...form}>
@@ -220,7 +220,7 @@ export const CreateTaskForm = ({
               />
             </div>
             <div className="mt-7">
-              <DotterSeperator />
+              <DottedSeperator />
             </div>
             <div className="flex items-center mt-10 w-full justify-between">
               <Button

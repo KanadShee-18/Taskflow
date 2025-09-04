@@ -1,6 +1,6 @@
 "use client";
 
-import { DotterSeperator } from "@/components/dotted-seperator";
+import { DottedSeperator } from "@/components/dotted-seperator";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -22,7 +22,7 @@ import { FcGoogle } from "react-icons/fc";
 import { FaGithub } from "react-icons/fa";
 import { useState } from "react";
 import { IoMdEye, IoMdEyeOff } from "react-icons/io";
-import Link from "next/link";
+import { Link } from "next-view-transitions";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -69,7 +69,7 @@ export const SignUpCard = () => {
         </CardDescription>
       </CardHeader>
       <div className="px-7">
-        <DotterSeperator />
+        <DottedSeperator />
       </div>
       <CardContent className="p-7">
         <Form {...form}>
@@ -168,7 +168,7 @@ export const SignUpCard = () => {
         </Link>
       </div>
       <div className="px-7">
-        <DotterSeperator />
+        <DottedSeperator />
       </div>
       <CardContent className="p-7 flex flex-col gap-y-4">
         <Button

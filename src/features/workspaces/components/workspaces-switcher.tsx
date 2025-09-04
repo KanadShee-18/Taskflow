@@ -1,10 +1,9 @@
 "use client";
 
-import { useRouter } from "next/navigation";
 import { RiAddCircleFill } from "react-icons/ri";
-import { useWorkspaceId } from "../hooks/workspaceId-hook";
 import { useGetWorkspaces } from "../api/use-get-workspaces";
 import { UseCreateWorkspaceModal } from "../hooks/use-create-workspace-modal";
+import { useWorkspaceId } from "../hooks/workspaceId-hook";
 
 import {
   Select,
@@ -13,17 +12,18 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { WorkspaceAvatar } from "./workspace-avatar";
 import { LayoutDashboard } from "lucide-react";
+import { useTransitionRouter } from "next-view-transitions";
+import { WorkspaceAvatar } from "./workspace-avatar";
 
 export const WorkspaceSwitcher = () => {
-  const router = useRouter();
+  const router = useTransitionRouter();
   const workspaceId = useWorkspaceId();
   const { data: workspaces } = useGetWorkspaces();
   const { open } = UseCreateWorkspaceModal();
 
   const onWorkspaceSelect = (id: string) => {
-    router.push(`/workspaces/${id}`);
+    router.push(`/dashboard/workspaces/${id}`);
   };
 
   return (

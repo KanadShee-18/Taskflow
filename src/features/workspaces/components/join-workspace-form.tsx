@@ -1,6 +1,6 @@
 "use client";
 
-import { DotterSeperator } from "@/components/dotted-seperator";
+import { DottedSeperator } from "@/components/dotted-seperator";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -9,11 +9,10 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import Link from "next/link";
+import { Link, useTransitionRouter } from "next-view-transitions";
 import { useJoinWorkspace } from "../api/use-join-workspace";
-import { useWorkspaceInviteCode } from "../hooks/workspaceInviteCode-hook";
 import { useWorkspaceId } from "../hooks/workspaceId-hook";
-import { useRouter } from "next/navigation";
+import { useWorkspaceInviteCode } from "../hooks/workspaceInviteCode-hook";
 
 interface JoinWorkspaceFormProps {
   initialValues: {
@@ -24,7 +23,7 @@ interface JoinWorkspaceFormProps {
 export const JoinWorkspaceForm = ({
   initialValues,
 }: JoinWorkspaceFormProps) => {
-  const router = useRouter();
+  const router = useTransitionRouter();
 
   const workspaceId = useWorkspaceId();
   const { mutate, isPending } = useJoinWorkspace();
@@ -38,7 +37,7 @@ export const JoinWorkspaceForm = ({
       },
       {
         onSuccess: ({ data }) => {
-          router.push(`/workspaces/${data.$id}`);
+          router.push(`/dashboard/workspaces/${data.$id}`);
         },
       }
     );
@@ -57,7 +56,7 @@ export const JoinWorkspaceForm = ({
         </CardDescription>
       </CardHeader>
       <div className="px-7">
-        <DotterSeperator />
+        <DottedSeperator />
       </div>
       <CardContent className="p-7">
         <div className="flex flex-col gap-2 lg:flex-row items-center justify-between">

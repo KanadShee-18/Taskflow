@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { PencilIcon, XIcon } from "lucide-react";
 
 import { Textarea } from "@/components/ui/textarea";
-import { DotterSeperator } from "@/components/dotted-seperator";
+import { DottedSeperator } from "@/components/dotted-seperator";
 import { useUpdateTask } from "../api/use-update-task";
 import { useTaskIdFromParams } from "../hooks/user-task-id";
 
@@ -56,7 +56,7 @@ export const TaskDescription = ({ task }: TaskDescriptionProps) => {
           )}
         </Button>
       </div>
-      <DotterSeperator className="my-4" />
+      <DottedSeperator className="my-4" />
       {isEditing ? (
         <>
           <div className="flex flex-col gap-y-4">

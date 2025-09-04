@@ -1,7 +1,7 @@
 import { ProjectAnalyticsResponseType } from "@/features/projects/api/use-get-project-analytics";
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
 import { AnalyticsCard } from "./analytics-card";
-import { DotterSeperator } from "@/components/dotted-seperator";
+import { DottedSeperator } from "@/components/dotted-seperator";
 
 export const ProjectAnalytics = ({ data }: ProjectAnalyticsResponseType) => {
   return (
@@ -14,7 +14,7 @@ export const ProjectAnalytics = ({ data }: ProjectAnalyticsResponseType) => {
             variant={data.taskDifference > 0 ? "up" : "down"}
             increaseValue={data.taskDifference}
           />
-          <DotterSeperator direction="vertical" />
+          <DottedSeperator direction="vertical" />
         </div>
         <div className="flex items-center flex-1">
           <AnalyticsCard
@@ -23,7 +23,7 @@ export const ProjectAnalytics = ({ data }: ProjectAnalyticsResponseType) => {
             variant={data.assignedTaskDifference > 0 ? "up" : "down"}
             increaseValue={data.assignedTaskDifference}
           />
-          <DotterSeperator direction="vertical" />
+          <DottedSeperator direction="vertical" />
         </div>
 
         <div className="flex items-center flex-1">
@@ -33,7 +33,7 @@ export const ProjectAnalytics = ({ data }: ProjectAnalyticsResponseType) => {
             variant={data.completeTaskDifference > 0 ? "up" : "down"}
             increaseValue={data.completeTaskDifference}
           />
-          <DotterSeperator direction="vertical" />
+          <DottedSeperator direction="vertical" />
         </div>
         <div className="flex items-center flex-1">
           <AnalyticsCard
@@ -42,7 +42,7 @@ export const ProjectAnalytics = ({ data }: ProjectAnalyticsResponseType) => {
             variant={data.overdueTaskDifference > 0 ? "up" : "down"}
             increaseValue={data.overdueTaskDifference}
           />
-          <DotterSeperator direction="vertical" />
+          <DottedSeperator direction="vertical" />
         </div>
         <div className="flex items-center flex-1">
           <AnalyticsCard
@@ -51,7 +51,7 @@ export const ProjectAnalytics = ({ data }: ProjectAnalyticsResponseType) => {
             variant={data.incompleteTaskDifference > 0 ? "up" : "down"}
             increaseValue={data.incompleteTaskDifference}
           />
-          <DotterSeperator direction="vertical" />
+          <DottedSeperator direction="vertical" />
         </div>
       </div>
       <ScrollBar orientation="horizontal" />

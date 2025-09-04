@@ -1,36 +1,38 @@
 "use client";
 
-import { useRouter } from "next/navigation";
-import { z } from "zod";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
-import { createWorkspaceSchema } from "../schemas";
+import { DottedSeperator } from "@/components/dotted-seperator";
+import { Avatar, AvatarFallback } from "@/components/ui/avatar";
+import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import {
   Form,
   FormControl,
-  FormItem,
   FormField,
+  FormItem,
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
-import { DotterSeperator } from "@/components/dotted-seperator";
 import { Input } from "@/components/ui/input";
-import { ImageIcon, Loader, Workflow } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { useCreateWorkspace } from "../api/use-create-workspace";
-import { useRef } from "react";
-import Image from "next/image";
-import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { cn } from "@/lib/utils";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { ImageIcon, Loader, Workflow } from "lucide-react";
+import { useTransitionRouter } from "next-view-transitions";
+import Image from "next/image";
+import { useRef, useState } from "react";
+import { useForm } from "react-hook-form";
+import { z } from "zod";
+import { useCreateWorkspace } from "../api/use-create-workspace";
+import { createWorkspaceSchema } from "../schemas";
 
 interface CreateWorkspaceFormProps {
   onCancel?: () => void;
 }
 
 export const WorkSpaceForm = ({ onCancel }: CreateWorkspaceFormProps) => {
-  const router = useRouter();
+  const router = useTransitionRouter();
   const { mutate, isPending } = useCreateWorkspace();
+
+  const [invitationLink, setInvitationLink] = useState<string>("");
 
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -40,6 +42,10 @@ export const WorkSpaceForm = ({ onCancel }: CreateWorkspaceFormProps) => {
       name: "",
     },
   });
+
+  const handleJoinInvitation = () => {
+    router.push(invitationLink);
+  };
 
   const onFormSubmit = (values: z.infer<typeof createWorkspaceSchema>) => {
     const finalValues = {
@@ -51,7 +57,7 @@ export const WorkSpaceForm = ({ onCancel }: CreateWorkspaceFormProps) => {
       {
         onSuccess: ({ data }) => {
           form.reset();
-          router.push(`/workspaces/${data.$id}`);
+          router.push(`/dashboard/workspaces/${data.$id}`);
         },
       }
     );
@@ -73,7 +79,7 @@ export const WorkSpaceForm = ({ onCancel }: CreateWorkspaceFormProps) => {
         </CardTitle>
       </CardHeader>
       <div className="px-7">
-        <DotterSeperator />
+        <DottedSeperator />
       </div>
       <CardContent className="p-7">
         <Form {...form}>
@@ -175,7 +181,7 @@ export const WorkSpaceForm = ({ onCancel }: CreateWorkspaceFormProps) => {
               />
             </div>
             <div className="mt-7">
-              <DotterSeperator />
+              <DottedSeperator />
             </div>
             <div className="flex items-center mt-10 w-full justify-between">
               <Button
@@ -199,6 +205,18 @@ export const WorkSpaceForm = ({ onCancel }: CreateWorkspaceFormProps) => {
             </div>
           </form>
         </Form>
+        <div className="mt-14 mb-7 flex flex-col gap-y-2">
+          <h2 className="font-semibold text-sm text-indigo-500">
+            Aleady have an invite link?
+          </h2>
+          <Input
+            onChange={(e) => setInvitationLink(e.target.value)}
+            placeholder="Enter your invitation link here..."
+          />
+          <Button onClick={handleJoinInvitation} className="w-fit ml-auto">
+            Join Workspace
+          </Button>
+        </div>
       </CardContent>
     </Card>
   );

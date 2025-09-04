@@ -20,7 +20,7 @@ export const useLogout = () => {
     },
     onSuccess: () => {
       toast.success("Logged out successfully!");
-      router.refresh();
+      window.location.replace("/");
       queryClient.invalidateQueries();
     },
     onError: () => {

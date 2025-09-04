@@ -9,6 +9,7 @@ import {
 export const NAVIGATION_ITEMS = [
   {
     label: "Home",
+    tag: "home",
     href: "",
     icon: GoHome,
     activeIcon: GoHomeFill,
@@ -16,18 +17,21 @@ export const NAVIGATION_ITEMS = [
   {
     label: "My Tasks",
     href: "/tasks",
+    tag: "tasks",
     icon: GoCheckCircle,
     activeIcon: GoCheckCircleFill,
   },
   {
     label: "Settings",
     href: "/settings",
+    tag: "settings",
     icon: SettingsIcon,
     activeIcon: SettingsIcon,
   },
   {
     label: "Members",
     href: "/members",
+    tag: "members",
     icon: UsersIcon,
     activeIcon: UsersIcon,
   },

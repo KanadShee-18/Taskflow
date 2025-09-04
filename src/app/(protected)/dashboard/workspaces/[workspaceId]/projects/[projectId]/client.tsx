@@ -10,7 +10,7 @@ import { ProjectAvatar } from "@/features/projects/components/project-avatar";
 import { useProjectId } from "@/features/projects/hook/use-project-id";
 import { TaskViewSwitcher } from "@/features/tasks/components/task-view-switcher";
 import { PencilIcon } from "lucide-react";
-import Link from "next/link";
+import { Link } from "next-view-transitions";
 
 export const ProjectIdClientPage = () => {
   const projectId = useProjectId();

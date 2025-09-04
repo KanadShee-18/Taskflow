@@ -1,21 +1,21 @@
 "use client";
 
-import { useRouter } from "next/navigation";
-import { z } from "zod";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
-import { updateWorkspaceSchema } from "../schemas";
+import { DottedSeperator } from "@/components/dotted-seperator";
+import { Avatar, AvatarFallback } from "@/components/ui/avatar";
+import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import {
   Form,
   FormControl,
-  FormItem,
   FormField,
+  FormItem,
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
-import { DotterSeperator } from "@/components/dotted-seperator";
 import { Input } from "@/components/ui/input";
+import { useConfirm } from "@/hooks/user-confirmation-modal";
+import { cn } from "@/lib/utils";
+import { zodResolver } from "@hookform/resolvers/zod";
 import {
   ArrowLeftIcon,
   CopyIcon,
@@ -25,17 +25,17 @@ import {
   Trash2,
   UserRoundPen,
 } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { useRef } from "react";
+import { useTransitionRouter } from "next-view-transitions";
 import Image from "next/image";
-import { Avatar, AvatarFallback } from "@/components/ui/avatar";
-import { cn } from "@/lib/utils";
-import { Workspace } from "../types";
-import { useUpdateWorkspace } from "../api/use-update-workspace";
-import { useConfirm } from "@/hooks/user-confirmation-modal";
-import { useDeleteWorkspace } from "../api/use-delete-workspace";
+import { useRef } from "react";
+import { useForm } from "react-hook-form";
 import { toast } from "sonner";
+import { z } from "zod";
+import { useDeleteWorkspace } from "../api/use-delete-workspace";
 import { useResetInvitationCode } from "../api/use-reset-invitation-code";
+import { useUpdateWorkspace } from "../api/use-update-workspace";
+import { updateWorkspaceSchema } from "../schemas";
+import { Workspace } from "../types";
 
 interface EditWorkspaceFormProps {
   onCancel?: () => void;
@@ -46,7 +46,7 @@ export const EditWorkSpaceForm = ({
   onCancel,
   initialValues,
 }: EditWorkspaceFormProps) => {
-  const router = useRouter();
+  const router = useTransitionRouter();
   const { mutate, isPending } = useUpdateWorkspace();
   const { mutate: deleteWorkspace, isPending: isDeletionPending } =
     useDeleteWorkspace();
@@ -145,7 +145,8 @@ export const EditWorkSpaceForm = ({
             onClick={
               onCancel
                 ? onCancel
-                : () => router.push(`/workspaces/${initialValues.$id}`)
+                : () =>
+                    router.push(`/dashboard/workspaces/${initialValues.$id}`)
             }
             size={"sm"}
             variant={"secondary"}
@@ -156,7 +157,7 @@ export const EditWorkSpaceForm = ({
           </Button>
         </CardHeader>
         <div className="px-7">
-          <DotterSeperator />
+          <DottedSeperator />
         </div>
         <CardContent className="p-7">
           <Form {...form}>
@@ -258,7 +259,7 @@ export const EditWorkSpaceForm = ({
                 />
               </div>
               <div className="mt-7">
-                <DotterSeperator />
+                <DottedSeperator />
               </div>
               <div className="flex items-center mt-10 w-full justify-between">
                 <Button
@@ -319,7 +320,7 @@ export const EditWorkSpaceForm = ({
                 </div>
               </div>
             </div>
-            <DotterSeperator className="py-7" />
+            <DottedSeperator className="py-7" />
             <Button
               size={"sm"}
               className="ml-auto"
@@ -345,12 +346,12 @@ export const EditWorkSpaceForm = ({
               <div>
                 <h3 className="font-bold text-rose-600">Danger Zone</h3>
                 <p className="text-sm text-muted-foreground font-medium">
-                  You&apos;re going to delete this workspace which will remove all
-                  its associated data
+                  You&apos;re going to delete this workspace which will remove
+                  all its associated data
                 </p>
               </div>
             </div>
-            <DotterSeperator className="py-7" />
+            <DottedSeperator className="py-7" />
             <Button
               size={"sm"}
               className="ml-auto"

@@ -1,7 +1,7 @@
 "use client";
 
 import ErrorPage from "@/app/error";
-import { DotterSeperator } from "@/components/dotted-seperator";
+import { DottedSeperator } from "@/components/dotted-seperator";
 import PageLoader from "@/components/page-loader";
 import { useGetSingleTask } from "@/features/tasks/api/use-get-single-task";
 import { TaskBreadCrumbs } from "@/features/tasks/components/task-bread-crumbs";
@@ -28,10 +28,10 @@ export const TaskIdClient = () => {
   return (
     <div className="flex flex-col relative">
       <TaskBreadCrumbs project={taskData.projectOfTask} task={taskData} />
-      <DotterSeperator className="my-6" />
+      <DottedSeperator className="my-6" />
       <div className="grid w-full grid-cols-1 lg:grid-cols-4 gap-4">
         <TaskOverview task={taskData} />
-        <TaskDescription task={taskData}/>
+        <TaskDescription task={taskData} />
       </div>
     </div>
   );

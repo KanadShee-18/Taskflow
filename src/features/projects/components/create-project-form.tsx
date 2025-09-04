@@ -1,29 +1,29 @@
 "use client";
 
-import { useRouter } from "next/navigation";
-import { z } from "zod";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
-import { createProjectSchema } from "../schemas";
+import { DottedSeperator } from "@/components/dotted-seperator";
+import { Avatar, AvatarFallback } from "@/components/ui/avatar";
+import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import {
   Form,
   FormControl,
-  FormItem,
   FormField,
+  FormItem,
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
-import { DotterSeperator } from "@/components/dotted-seperator";
 import { Input } from "@/components/ui/input";
-import { FolderGit2, ImageIcon, Loader } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { useRef } from "react";
-import Image from "next/image";
-import { Avatar, AvatarFallback } from "@/components/ui/avatar";
-import { cn } from "@/lib/utils";
-import { useCreateProject } from "../api/use-create-project";
 import { useWorkspaceId } from "@/features/workspaces/hooks/workspaceId-hook";
+import { cn } from "@/lib/utils";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { FolderGit2, ImageIcon, Loader } from "lucide-react";
+import { useTransitionRouter } from "next-view-transitions";
+import Image from "next/image";
+import { useRef } from "react";
+import { useForm } from "react-hook-form";
+import { z } from "zod";
+import { useCreateProject } from "../api/use-create-project";
+import { createProjectSchema } from "../schemas";
 
 interface CreateProjectFormProps {
   onCancel?: () => void;
@@ -31,7 +31,7 @@ interface CreateProjectFormProps {
 
 export const CreateProjectForm = ({ onCancel }: CreateProjectFormProps) => {
   const workspaceId = useWorkspaceId();
-  const router = useRouter();
+  const router = useTransitionRouter();
   const { mutate, isPending } = useCreateProject();
 
   const inputRef = useRef<HTMLInputElement>(null);
@@ -54,7 +54,9 @@ export const CreateProjectForm = ({ onCancel }: CreateProjectFormProps) => {
       {
         onSuccess: ({ data }) => {
           form.reset();
-          router.push(`/workspaces/${workspaceId}/projects/${data.$id}`);
+          router.push(
+            `/dashboard/workspaces/${workspaceId}/projects/${data.$id}`
+          );
         },
       }
     );
@@ -76,7 +78,7 @@ export const CreateProjectForm = ({ onCancel }: CreateProjectFormProps) => {
         </CardTitle>
       </CardHeader>
       <div className="px-7">
-        <DotterSeperator />
+        <DottedSeperator />
       </div>
       <CardContent className="p-7">
         <Form {...form}>
@@ -178,7 +180,7 @@ export const CreateProjectForm = ({ onCancel }: CreateProjectFormProps) => {
               />
             </div>
             <div className="mt-7">
-              <DotterSeperator />
+              <DottedSeperator />
             </div>
             <div className="flex items-center mt-10 w-full justify-between">
               <Button

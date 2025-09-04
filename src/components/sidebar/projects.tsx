@@ -6,7 +6,7 @@ import { UseCreateProjectModal } from "@/features/projects/hook/use-create-proje
 import { useWorkspaceId } from "@/features/workspaces/hooks/workspaceId-hook";
 import { cn } from "@/lib/utils";
 import { FolderOpenDot } from "lucide-react";
-import Link from "next/link";
+import { Link } from "next-view-transitions";
 import { usePathname } from "next/navigation";
 import { RiAddCircleFill } from "react-icons/ri";
 
@@ -32,7 +32,7 @@ export const Projects = () => {
         />
       </div>
       {data?.documents.map((project) => {
-        const href = `/workspaces/${workspaceId}/projects/${project.$id}`;
+        const href = `/dashboard/workspaces/${workspaceId}/projects/${project.$id}`;
         const isActive = pathname === href;
 
         return (

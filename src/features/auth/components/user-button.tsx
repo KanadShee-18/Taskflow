@@ -1,5 +1,6 @@
 "use client";
 
+import { DottedSeperator } from "@/components/dotted-seperator";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import {
   DropdownMenu,
@@ -7,12 +8,13 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { DotterSeperator } from "@/components/dotted-seperator";
-import { useLogout } from "../api/use-logout";
+import { HomeIcon, Loader, LogOut } from "lucide-react";
+import { useTransitionRouter } from "next-view-transitions";
 import { useCurrentUser } from "../api/use-current-user";
-import { Loader, LogOut } from "lucide-react";
+import { useLogout } from "../api/use-logout";
 
 export const UserButton = () => {
+  const router = useTransitionRouter();
   const { data: user, isLoading } = useCurrentUser();
   const { mutate: logout } = useLogout();
   if (isLoading) {
@@ -58,10 +60,17 @@ export const UserButton = () => {
             <p className="text-xs text-neutral-500">{email}</p>
           </div>
         </div>
-        <DotterSeperator className="mb-1" />
+        <DottedSeperator className="mb-1" />
+        <DropdownMenuItem
+          onClick={() => router.push("/")}
+          className="h-10 flex items-center font-medium text-indigo-700 cursor-pointer"
+        >
+          <HomeIcon className="size-5 mr-2" />
+          Back to Home
+        </DropdownMenuItem>
         <DropdownMenuItem
           onClick={() => logout()}
-          className="h-10 flex items-center justify-center font-medium text-indigo-700 cursor-pointer"
+          className="h-10 flex items-center font-medium text-indigo-700 cursor-pointer"
         >
           <LogOut className="size-5 mr-2" />
           Sign Out

@@ -1,7 +1,7 @@
 "use client";
 
 import { NAVIGATION_ITEMS } from "@/utils/constants";
-import Link from "next/link";
+import { Link } from "next-view-transitions";
 import { cn } from "@/lib/utils";
 import { usePathname } from "next/navigation";
 import { useWorkspaceId } from "@/features/workspaces/hooks/workspaceId-hook";
@@ -12,7 +12,10 @@ const NavigationMenus = () => {
   return (
     <ul className="flex flex-col">
       {NAVIGATION_ITEMS.map((item) => {
-        const actualRedirectHref = `/workspaces/${workspaceId}${item.href}`;
+        const actualRedirectHref =
+          item.tag === "tasks" || item.tag === "home"
+            ? `/dashboard/workspaces/${workspaceId}${item.href}`
+            : `/workspaces/${workspaceId}${item.href}`;
         const isActiveMenu = pathname === actualRedirectHref;
         const Icon = isActiveMenu ? item.activeIcon : item.icon;
         return (

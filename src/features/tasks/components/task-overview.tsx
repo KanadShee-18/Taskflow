@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Task } from "../types";
 import { PencilIcon } from "lucide-react";
-import { DotterSeperator } from "@/components/dotted-seperator";
+import { DottedSeperator } from "@/components/dotted-seperator";
 import { OverviewProperty } from "./overview-property";
 import { MemberAvatar } from "@/features/member/components/member-avatar";
 import { TaskDate } from "./task-date";
@@ -30,7 +30,7 @@ export const TaskOverview = ({ task }: TaskOverviewProps) => {
             Edit
           </Button>
         </div>
-        <DotterSeperator className="my-4" />
+        <DottedSeperator className="my-4" />
         <div className="flex flex-col gap-y-4">
           <OverviewProperty label="Assignee">
             <MemberAvatar name={task.assignee.name} className="size-6" />

@@ -1,6 +1,6 @@
 "use client";
 
-import { DotterSeperator } from "@/components/dotted-seperator";
+import { DottedSeperator } from "@/components/dotted-seperator";
 import { useQueryState } from "nuqs";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -84,9 +84,9 @@ export const TaskViewSwitcher = ({
             NEW TASK
           </Button>
         </div>
-        <DotterSeperator className="my-4" />
+        <DottedSeperator className="my-4" />
         <DataFilters hideProjectFilters={hideProjectFilter} />
-        <DotterSeperator className="my-4" />
+        <DottedSeperator className="my-4" />
         {isTasksLoading ? (
           <div className="w-full h-[200px] flex flex-col items-center justify-center border rounded-lg ">
             <Loader className="animate-spin size-5 text-muted-foreground" />
