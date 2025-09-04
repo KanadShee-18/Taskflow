@@ -33,12 +33,11 @@ export function HeroSection() {
     <motion.section
       initial="hidden"
       animate="visible"
-      className="pt-24 md:pt-32 lg:pt-44 flex items-center justify-center relative"
+      className="pt-24 sm:pt-32 md:pt-44 lg:pt-44 flex items-center justify-center relative"
     >
       <div className="mx-auto px-4 md:px-10">
         <div className="flex flex-col items-center gap-y-12 justify-center">
-          <div className="w-full lg:w-10/12 mb-10 lg:mb-0 relative flex flex-col items-center">
-            {/* <BgGradient /> */}
+          <div className="w-full lg:w-10/12 mb-10 lg:mb-0 relative flex flex-col items-center gap-y-3">
             <motion.div
               initial={{ opacity: 0, scale: 0 }}
               whileInView={{ opacity: 1, scale: 1 }}
@@ -59,7 +58,7 @@ export function HeroSection() {
                 ease: "easeOut",
               }}
               viewport={{ once: true }}
-              className="text-4xl md:text-5xl lg:text-7xl font-bold leading-tight text-gray-800 mb-4 font-serif relative text-center tracking-tighter"
+              className="text-4xl md:text-6xl lg:text-7xl font-bold leading-tight text-gray-800 mb-4 font-serif relative text-center tracking-tighter"
             >
               Build, Plan, and Manage Your
               <span className="bg-gradient-to-tl from-indigo-500 to-teal-500 text-transparent bg-clip-text">
@@ -141,7 +140,7 @@ export function HeroSection() {
               ease: "easeIn",
             }}
             viewport={{ once: true }}
-            className="w-full lg:w-10/12 rounded-lg shadow-2xl mb-20"
+            className="w-full lg:w-10/12 rounded-lg shadow-2xl my-16"
           >
             <div className="relative w-full bg-gradient-to-br from-indigo-50 to-teal-50 rounded-lg p-4 md:p-6 lg:p-8">
               <div className="bg-white rounded-lg shadow-lg p-4 md:p-6">
@@ -156,10 +155,10 @@ export function HeroSection() {
                 <motion.div
                   initial={{ filter: "blur(10px)" }}
                   whileInView={{ filter: "blur(0px)" }}
-                  viewport={{ once: true, amount: 0.3 }}
+                  viewport={{ once: true, amount: 0.6 }}
                   className="w-full flex justify-center relative"
                 >
-                  <span className="absolute -bottom-2">
+                  <span className="absolute -bottom-2 animate-pulse">
                     <MousePointer2 className="text-indigo-600 size-3 md:size-5" />
                   </span>
                   <Image
