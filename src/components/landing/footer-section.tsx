@@ -7,7 +7,7 @@ export function Footer() {
       id="footer"
       className="bg-gray-50  mx-auto py-12 md:py-16 border-t border-gray-200 relative"
     >
-      <div className="container max-w-[1408px] mx-auto px-4">
+      <div className="container max-w-[1408px] mx-auto px-10 md:px-6">
         <div className="grid grid-cols-1 md:grid-cols-5 gap-8 mb-8">
           <div className="md:col-span-2">
             <MainLogo />
