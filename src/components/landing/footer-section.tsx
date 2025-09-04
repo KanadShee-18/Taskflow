@@ -5,9 +5,9 @@ export function Footer() {
   return (
     <footer
       id="footer"
-      className="bg-gray-50 py-12 md:py-16 border-t border-gray-200 relative"
+      className="bg-gray-50  mx-auto py-12 md:py-16 border-t border-gray-200 relative"
     >
-      <div className="container mx-auto px-4">
+      <div className="container max-w-[1408px] mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-5 gap-8 mb-8">
           <div className="md:col-span-2">
             <MainLogo />
@@ -17,7 +17,9 @@ export function Footer() {
             </p>
             <div className="flex space-x-4">
               <a
-                href="#footer"
+                href="https://x.com/Kanad_Shee"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="text-gray-400 hover:text-indigo-600 transition"
               >
                 <svg
@@ -35,7 +37,9 @@ export function Footer() {
                 </svg>
               </a>
               <a
-                href="#footer"
+                href="https://github.com/KanadShee-18"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="text-gray-400 hover:text-indigo-600 transition"
               >
                 <svg
@@ -43,17 +47,43 @@ export function Footer() {
                   width="20"
                   height="20"
                   viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
+                  fill="currentColor"
+                  stroke="none"
                 >
-                  <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+                  <path
+                    d="M12 0.297c-6.63 0-12 5.373-12 12 
+      0 5.303 3.438 9.8 8.205 11.385 
+      0.6 0.113 0.82-0.26 0.82-0.577 
+      0-0.285-0.01-1.04-0.015-2.04 
+      -3.338 0.724-4.042-1.61-4.042-1.61 
+      -0.546-1.387-1.333-1.757-1.333-1.757 
+      -1.089-0.745 0.084-0.729 0.084-0.729 
+      1.205 0.084 1.84 1.236 1.84 1.236 
+      1.07 1.835 2.807 1.304 3.492 0.997 
+      0.108-0.775 0.418-1.305 0.762-1.605 
+      -2.665-0.3-5.466-1.335-5.466-5.93 
+      0-1.31 0.465-2.38 1.235-3.22 
+      -0.123-0.303-0.535-1.523 0.117-3.176 
+      0 0 1.008-0.322 3.301 1.23 
+      0.957-0.266 1.983-0.399 3.003-0.404 
+      1.02 0.005 2.047 0.138 3.006 0.404 
+      2.291-1.552 3.297-1.23 3.297-1.23 
+      0.653 1.653 0.242 2.873 0.118 3.176 
+      0.77 0.84 1.233 1.91 1.233 3.22 
+      0 4.61-2.804 5.625-5.475 5.92 
+      0.43 0.372 0.823 1.102 0.823 2.222 
+      0 1.606-0.015 2.898-0.015 3.293 
+      0 0.32 0.216 0.694 0.825 0.576 
+      C20.565 22.092 24 17.592 24 12.297 
+      c0-6.627-5.373-12-12-12z"
+                  />
                 </svg>
               </a>
+
               <a
-                href="#footer"
+                href="https://www.instagram.com/kanadshee/"
+                target="_blank"
+                rel={"noopener noreferrer"}
                 className="text-gray-400 hover:text-indigo-600 transition"
               >
                 <svg
@@ -73,7 +103,8 @@ export function Footer() {
                 </svg>
               </a>
               <a
-                href="#footer"
+                href="https://www.linkedin.com/in/kanadshee/"
+                target="_blank"
                 className="text-gray-400 hover:text-indigo-600 transition"
               >
                 <svg

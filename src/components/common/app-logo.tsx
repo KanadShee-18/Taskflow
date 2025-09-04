@@ -6,7 +6,13 @@ export const MainLogo = () => {
     <Link href={"/"}>
       <div className="flex items-center">
         <Image src={"/logo.jpg"} alt="TaskFlow" width={50} height={60} />
-        <Image src={"/logo-text.png"} alt="TaskFlow" width={90} height={70} />
+        <Image
+          src={"/logo-text.png"}
+          alt="TaskFlow"
+          width={90}
+          height={70}
+          className="md:block hidden"
+        />
       </div>
     </Link>
   );

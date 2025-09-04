@@ -54,7 +54,7 @@ export function WorkflowSection() {
           className="text-center mb-16 relative"
         >
           <div className="absolute w-1/2 h-[400px] bg-teal-400 rounded-full blur-[140px] opacity-40 right-0 -top-40" />
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-gray-800 mb-4 font-serif relative">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-gray-800 mb-4 font-serif relative">
             How{" "}
             <span className="bg-gradient-to-tl from-indigo-500 to-teal-500 text-transparent bg-clip-text">
               {" "}
@@ -62,7 +62,7 @@ export function WorkflowSection() {
             </span>{" "}
             Works
           </h2>
-          <p className="text-lg font-sans-source text-gray-500 mb-8 max-w-lg font-semibold mx-auto">
+          <p className="text-sm sm:text-base md:text-lg font-sans-source text-gray-500 mb-8 max-w-lg font-semibold mx-auto">
             Get started with Taskflow in just a few simple steps and transform
             how your team manages projects.
           </p>

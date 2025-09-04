@@ -42,10 +42,10 @@ export function RolesSection() {
     <section id="userRoles" className="py-16 md:py-24 bg-gray-50 relative">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-4 font-serif text-transparent bg-gradient-to-b from-indigo-400 to-slate-700 bg-clip-text">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-4 font-serif text-transparent bg-gradient-to-b from-indigo-400 to-slate-700 bg-clip-text">
             User Roles & Collaboration
           </h2>
-          <p className="text-lg font-sans-source text-gray-500 mb-8 max-w-lg font-semibold mx-auto">
+          <p className="text-sm sm:text-base md:text-lg font-sans-source text-gray-500 mb-8 max-w-lg font-semibold mx-auto">
             Taskflow offers flexible permissions to support different team
             structures and workflows.
           </p>

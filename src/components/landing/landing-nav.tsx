@@ -52,9 +52,11 @@ export async function Navbar() {
         </div>
 
         <div className="flex items-center space-x-3">
-          <Link href={`${user ? "/dashboard" : "/sign-in"}`}>
-            <Button variant="secondary">{user ? "Workspace" : "Login"}</Button>
-          </Link>
+          {!user && (
+            <Link href={"/sign-in"} className="md:block hidden">
+              <Button variant="secondary">{"Login"}</Button>
+            </Link>
+          )}
           {!user && (
             <Link href={"/sign-up"}>
               <Button className="bg-gradient-to-r from-indigo-600 to-teal-500 hover:bg-gradient-to-br transition-all duration-300">

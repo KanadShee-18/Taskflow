@@ -1,6 +1,7 @@
 "use client";
 
 import { ShinnyButton } from "@/components/common/shinny-cta-button";
+import { MousePointer, MousePointer2, TextCursorIcon } from "lucide-react";
 import { motion, Variants } from "motion/react";
 import Image from "next/image";
 
@@ -76,7 +77,7 @@ export function HeroSection() {
                 ease: "easeOut",
               }}
               viewport={{ once: true }}
-              className="text-lg md:text-xl font-sans-source text-gray-500 mb-8 w-4/5 font-semibold pl-3 relative text-center"
+              className="text-base sm:text-lg md:text-xl font-sans-source text-gray-500 mb-8 md:w-4/5 w-11/12 sm:w-10/12 font-semibold pl-3 relative text-center"
             >
               Taskflow is an agile project management platform that helps teams
               collaborate, visualize work, and streamline complex projects.
@@ -156,8 +157,11 @@ export function HeroSection() {
                   initial={{ filter: "blur(10px)" }}
                   whileInView={{ filter: "blur(0px)" }}
                   viewport={{ once: true, amount: 0.3 }}
-                  className="w-full flex justify-center"
+                  className="w-full flex justify-center relative"
                 >
+                  <span className="absolute -bottom-2">
+                    <MousePointer2 className="text-indigo-600 size-3 md:size-5" />
+                  </span>
                   <Image
                     src={"/hero-showcase.png"}
                     alt="showcase"

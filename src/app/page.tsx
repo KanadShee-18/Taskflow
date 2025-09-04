@@ -8,8 +8,8 @@ import { WorkflowSection } from "@/components/landing/workflow-section";
 
 const page = () => {
   return (
-    <div className="font-manrope selection:bg-cyan-400/30 relative">
-      <div className="absolute inset-0 w-full z-0 bg-white bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:16px_16px]" />
+    <div className="font-manrope bg-red-600 selection:bg-cyan-400/30 relative w-screen overflow-x-hidden">
+      <div className="absolute inset-0 w-screen z-0 bg-white bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:16px_16px]" />
       <Navbar />
       <HeroSection />
       <div className="max-w-[1408px] mx-auto">

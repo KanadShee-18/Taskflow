@@ -84,10 +84,10 @@ export function FeaturesSection() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-4 font-serif text-transparent bg-gradient-to-b from-indigo-400 to-slate-700 bg-clip-text">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-4 font-serif text-transparent bg-gradient-to-b from-indigo-400 to-slate-700 bg-clip-text">
             Multiple Views, One Workflow
           </h2>
-          <p className="text-lg text-gray-500 max-w-2xl mx-auto font-semibold font-sans-source">
+          <p className="text-sm sm:text-base md:text-lg text-gray-500 max-w-2xl mx-auto font-semibold font-sans-source">
             Taskflow adapts to your team&apos;s preferences with three powerful
             views to manage your projects efficiently.
           </p>
@@ -105,7 +105,7 @@ export function FeaturesSection() {
               key={index}
               variants={cardVariants}
               // viewport={{ once: true }}
-              className="bg-gradient-to-br from-indigo-50 to-teal-50 p-4 rounded-lg lg:w-full w-[450px] mx-auto shadow-xs z-50"
+              className="bg-gradient-to-br from-indigo-50 to-teal-50 p-4 rounded-lg lg:w-full max-w-[450px] mx-auto shadow-xs z-50"
             >
               <Card className="border border-gray-200 hover:shadow-lg transition-shadow duration-300">
                 <CardHeader>
