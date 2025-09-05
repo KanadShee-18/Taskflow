@@ -44,18 +44,6 @@ const containerVariants: Variants = {
   },
 };
 
-const cardVariants: Variants = {
-  hidden: { opacity: 0, y: 50 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.6,
-      ease: 'easeOut',
-    },
-  },
-};
-
 const handVariants = {
   initial: { x: 0, y: 0, opacity: 1 },
   animate: {
@@ -103,8 +91,14 @@ export function FeaturesSection() {
           {features.map((feature, index) => (
             <motion.div
               key={index}
-              variants={cardVariants}
-              // viewport={{ once: true }}
+              viewport={{ amount: 0.5 }}
+              initial={{ opacity: 0, y: 120 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{
+                duration: 0.6,
+                ease: 'easeInOut',
+                delay: index * 0.08,
+              }}
               className="shadow-xs z-50 mx-auto max-w-[450px] rounded-lg bg-gradient-to-br from-indigo-50 to-teal-50 p-4 lg:w-full"
             >
               <Card className="border border-gray-200 transition-shadow duration-300 hover:shadow-lg">
